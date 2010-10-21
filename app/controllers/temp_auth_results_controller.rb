@@ -1,4 +1,6 @@
 class TempAuthResultsController < ApplicationController
+  def index
+  end
   def failure
     @message = params[:message]
     @error = request.env['omniauth.error']
