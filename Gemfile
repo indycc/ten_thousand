@@ -36,3 +36,4 @@ end
 gem 'oa-openid'
 gem 'haml'
 gem 'mongrel'
+gem 'ruby-debug'
