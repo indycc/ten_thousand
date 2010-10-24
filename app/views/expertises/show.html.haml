@@ -1,5 +1,13 @@
-<p id="notice"><%= notice %></p>
+%p#notice
+  = notice
 
+Expertise:
+=@expertise.name
+%br/
 
-<%= link_to 'Edit', edit_expertise_path(@expertise) %> |
-<%= link_to 'Back', expertises_path %>
+Minutes remaining:
+= @expertise.total_minutes_remaining/60
+%br/
+
+= link_to 'Edit', edit_expertise_path(@expertise) |
+= link_to 'Back', expertises_path
