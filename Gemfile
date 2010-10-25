@@ -28,6 +28,11 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+group :development, :test do
+   gem 'rspec'
+   gem 'rspec-rails'
+end
+
 gem 'oa-openid'
 gem 'haml'
 gem 'mongrel'

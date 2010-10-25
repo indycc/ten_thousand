@@ -10,11 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021112036) do
+ActiveRecord::Schema.define(:version => 20101021112124) do
 
   create_table "expertises", :force => true do |t|
     t.string   "name"
     t.integer  "total_minutes_remaining"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "practice_logs", :force => true do |t|
+    t.date     "occurred_on"
+    t.time     "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
