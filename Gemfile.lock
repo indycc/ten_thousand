@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
+    addressable (2.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
@@ -37,6 +38,9 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faraday (0.4.6)
+      addressable (>= 2.1.1)
+      rack (>= 1.0.1)
     fastthread (1.0.7)
     gem_plugin (0.2.3)
     haml (3.0.22)
@@ -55,12 +59,24 @@ GEM
     mongrel (1.1.5-x86-mingw32)
       cgi_multipart_eof_fix (>= 2.4)
       gem_plugin (>= 0.2.3)
+    multi_json (0.0.4)
+    nokogiri (1.4.3.1)
     oa-core (0.1.5)
       rack (~> 1.1)
+    oa-oauth (0.1.5)
+      multi_json (~> 0.0.2)
+      nokogiri (~> 1.4.2)
+      oa-core (= 0.1.5)
+      oauth (~> 0.4.0)
+      oauth2 (~> 0.0.10)
     oa-openid (0.1.5)
       oa-core (= 0.1.5)
       rack-openid (~> 1.1.1)
       ruby-openid-apps-discovery
+    oauth (0.4.3)
+    oauth2 (0.0.13)
+      faraday (~> 0.4.1)
+      multi_json (>= 0.0.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -118,6 +134,7 @@ PLATFORMS
 DEPENDENCIES
   haml
   mongrel
+  oa-oauth
   oa-openid
   rails (= 3.0.0)
   rspec
