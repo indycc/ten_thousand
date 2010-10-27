@@ -28,6 +28,13 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
-gem 'oa-openid'
+group :development, :test do
+   gem 'rspec'
+   gem 'rspec-rails'
+end
+
+gem 'oa-openid', :require => 'omniauth/openid'
 gem 'haml'
 gem 'mongrel'
+gem 'ruby-debug'
+gem 'oa-oauth', :require => 'omniauth/oauth'
