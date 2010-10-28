@@ -1,13 +1,7 @@
-log in with
-%a{:href => '/auth/open_id'}<
-  openid
-or
-%a{:href => '/auth/open_id?openid_url=https://www.google.com/accounts/o8/id'}<
-  google openid
-or
-%a{:href => '/auth/google'}<
-  google
-or
-%a{:href => '/auth/twitter'}<
-  twitter
+%a{:href => '/login'}
+  log in / sign up
+%a{:href => '/logout'}
+  log out
 
+.deleteme
+  =debug session

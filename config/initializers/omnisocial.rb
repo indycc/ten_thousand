@@ -13,6 +13,7 @@ Omnisocial.setup do |config|
   elsif Rails.env.development?
     
     # Configs for development mode go here
+    config.twitter 'Rq2oBgdlhylDHMWbnvRw5w', '00MqddgC86iVeLVyrvo65vaEt9q52QMYCKUwssIcZ4'
     
   end
   

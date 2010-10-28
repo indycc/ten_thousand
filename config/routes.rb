@@ -2,8 +2,6 @@ TenThousand::Application.routes.draw do
   resources :expertises
 
   #match '/auth/:provider/callback', :to => 'sessions#create'
-  match '/auth/failure', :to => 'temp_auth_results#failure'
-  match '/auth/:provider/callback', :to => 'temp_auth_results#success'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
