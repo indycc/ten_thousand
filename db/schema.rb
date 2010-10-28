@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021112124) do
+ActiveRecord::Schema.define(:version => 20101028114501) do
 
   create_table "expertises", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20101021112124) do
     t.time     "duration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "expertise_id"
   end
 
 end
