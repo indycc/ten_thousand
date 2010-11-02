@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %title
+      10,000
+    =stylesheet_link :app
+  %body
+    #header
+      %h1
+        10,000
+      %h2
+        Learn how to do anything!
+      #login
+        Log in with
+        %a{:href => '/auth/twitter'}
+          Twitter
+    %form{:action => 'TODO', :method => 'GET'}
+      %input#searchbox{:type => 'text', :name => 'q', :placeholder => 'What do you want to learn?'}
+      %input#searchbutton{:type => 'submit', :value => '>>'}
+
