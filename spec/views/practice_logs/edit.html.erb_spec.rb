@@ -5,6 +5,7 @@ describe "practice_logs/edit.html.erb" do
     @practice_log = assign(:practice_log, stub_model(PracticeLog,
       :new_record? => false
     ))
+    @expertises = []
   end
 
   it "renders the edit practice_log form" do

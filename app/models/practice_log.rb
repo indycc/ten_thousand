@@ -1,5 +1,5 @@
 class PracticeLog < ActiveRecord::Base
-  # TODO : belongs_to :expertice
+  belongs_to :expertise
   # TODO : belongs_to :user
   
 end

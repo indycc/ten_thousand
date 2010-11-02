@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "practice_logs/new.html.erb" do
   before(:each) do
     assign(:practice_log, stub_model(PracticeLog).as_new_record)
+    assign(:expertises, [])
   end
 
   it "renders new practice_log form" do

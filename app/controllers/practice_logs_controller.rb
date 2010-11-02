@@ -25,7 +25,7 @@ class PracticeLogsController < ApplicationController
   # GET /practice_logs/new.xml
   def new
     @practice_log = PracticeLog.new
-    @expertises = Expertise.all
+    @expertises = Expertise.all.collect{ |e| [e.name, e.id] }
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,12 +36,14 @@ class PracticeLogsController < ApplicationController
   # GET /practice_logs/1/edit
   def edit
     @practice_log = PracticeLog.find(params[:id])
+    @expertises = Expertise.all.collect{ |e| [e.name, e.id] }
   end
 
   # POST /practice_logs
   # POST /practice_logs.xml
   def create
     @practice_log = PracticeLog.new(params[:practice_log])
+    #@practice_log.expertise_id = # ... params[:expertise_id]
 
     respond_to do |format|
       if @practice_log.save

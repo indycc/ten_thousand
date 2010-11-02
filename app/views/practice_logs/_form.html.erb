@@ -12,7 +12,8 @@
   <% end %>
 
   <div>Occurred On: <%= f.text_field :occurred_on %></div>
-  <div>Duration: <%= f.text_field :duration %>
+  <div>Duration: <%= f.text_field :duration %>     </div>
+  <div>Expertise: <%= f.select :expertise_id, options_for_select(@expertises) %></div>
   <div class="actions">
     <%= f.submit %>
   </div>

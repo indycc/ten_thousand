@@ -35,9 +35,9 @@ describe PracticeLogsController do
         def mock_expertises(stubs={})
           @mock_expertises ||= mock_model(Expertise).as_null_object.tap { |expertise| expertise.stub(stubs) unless stubs.empty?}
         end
-      Expertise.stub(:all) {[ mock_expertises] }
+      Expertise.stub(:all) { mock_expertises }
       get :new
-      assigns(:expertises).first.should be(mock_expertises)
+      assigns(:expertises).first.should be(mock_expertises.first)
     end
   end
 
