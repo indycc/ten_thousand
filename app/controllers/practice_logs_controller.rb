@@ -43,7 +43,13 @@ class PracticeLogsController < ApplicationController
   # POST /practice_logs.xml
   def create
     @practice_log = PracticeLog.new(params[:practice_log])
-    #@practice_log.expertise_id = # ... params[:expertise_id]
+    time_formatted = params[:practice_log][:duration]
+    if ((not time_formatted.nil?) and time_formatted.match(":") )
+      match = time_formatted.match('(\d{1,2}):(\d{1,2})')
+      hours_part = match[1].to_i * 60
+      minutes_part = match[2].to_i
+      @practice_log.duration = hours_part + minutes_part
+    end
 
     respond_to do |format|
       if @practice_log.save
