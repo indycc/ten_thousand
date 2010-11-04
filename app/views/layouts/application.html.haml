@@ -3,40 +3,28 @@
   %head
     %title
       \&#x2182
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'common', 'app'
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
     #container
-      - flash.each do |key, value|
-        %div{:class => "flash #{key}"}
-          = value
-      #header
-        %h1
-          %a{:href => root_url(:noredir => true)}
-            %abbr{:title => '10,000!'}
-              \&#x2182;
-        %h2
-          Learn how to do anything!
-        #menu
-          %ul
-            - if current_user?
-              %li
-                %a{:href => expertises_path}<>
-                  Expertises
-              %li
-                %a{:href => practice_logs_path}<>
-                  Practice Logs
-            - else
-              %li#login_menu
-                Login:
-                %ul#login_methods
-                  %li#login_twitter
-                    %a{:href => '/auth/twitter'}<>
-                      Twitter
-            %li
-              %form{:action => 'TODO', :method => 'GET'}
-                %input#searchbox{:type => 'text', :name => 'q', :placeholder => 'What do you want to learn?'}
-                %input#searchbutton{:type => 'submit', :value => '>>'}
+      #nav-header
+        #logo
+          %a{:href => root_path}
+            10,000
+        #nav-left
+          .nav-item
+            %a{:href => expertises_path}
+              expertises
+          .nav-item
+            %a{:href => practice_logs_path}
+              practice
+        #nav-right
+          .nav-item
+            %a{:href => logout_path}
+              sign out
       #content
+        - flash.each do |key, value|
+          %div{:class => "flash #{key}"}
+            = value
         =yield

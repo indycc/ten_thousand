@@ -1,82 +1,65 @@
-body
+#nav-header
 {
-  background-color: white;
-  margin: 0;
+  height: 50px;
+  background: url('../images/toolbarbg.png') repeat-x;
+  position:relative;
 }
 
-body > *
-{
-  color: #1A0;
-}
-
-#header
-{
-  background-color: #180;
-  color: #AF9;
-  padding: 1em;
-  position: relative;
-}
-
-#header h1
-{
-  text-align: center;
-  margin: 0 auto;
-}
-
-#header h2
-{
-  font-size: large;
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  vertical-align: middle;
-  font-style: italic;
-  padding-right: 1em;
-}
-
-#header a
-{
-  color: inherit;
-  text-decoration: none;
-}
-
-#header a:hover
+#nav-header,
+#nav-header a
 {
   color: white;
-  background-color: inherit;
+  text-decoration:none;
+  font-size: 20px;
 }
 
-#menu
+#nav-header a:hover
 {
-  height: 30px;
+  color: #dfc;
 }
 
-#menu *
+#logo
 {
-  display: inline;
+  position: absolute;
+  height: 50px;
+  width: 130px;
+  background: url('../images/logow.png') 7px 6px no-repeat;
 }
-
-#menu ul
+#logo > a
 {
-  padding: 0;
-  font-size: large;
+  text-indent: -10000px;
+  height: 100%;
+  width: 100%;
+  display: block;
 }
-
-#login_menu
+#nav-left,
+#nav-right
 {
-  font-weight: bold;
-  border: solid 1px #3B2;
-  padding: 0.2em 0.5em;
+  position: absolute;
+  height: 100%;
 }
-
-#login_twitter > a
+#nav-left
 {
-  background: url('../images/twitter_newbird_white.png') 0 -3px no-repeat;
-  padding-left: 28px;
+  left: 130px;
 }
-
-#content
+#nav-right
 {
-  margin: 1em 5em;
+  right: 0px;
+}
+.nav-item
+{
+  float: left;
+}
+.nav-item > a
+{
+  display: block;
+  height: 26px;
+  padding: 12px 10px;
+}
+#logo > a:hover,
+.nav-item > a:hover
+{
+  margin: 0 -1px;
+  border-left: solid 1px black;
+  border-right: solid 1px black;
 }
