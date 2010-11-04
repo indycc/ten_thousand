@@ -1,7 +1,5 @@
 class WelcomeController < ApplicationController
-  layout false
-
   def index
-    redirect('/TODO') if current_user?
+    redirect_to(expertises_path) if current_user? unless params[:noredir]
   end
 end
