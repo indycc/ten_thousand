@@ -1,65 +1,17 @@
 #nav-header
 {
-  height: 50px;
   background: url('../images/toolbarbg.png') repeat-x;
-  position:relative;
 }
-
 #nav-header,
 #nav-header a
 {
   color: white;
-  text-decoration:none;
-  font-size: 20px;
 }
-
 #nav-header a:hover
 {
   color: #dfc;
 }
-
 #logo
 {
-  position: absolute;
-  height: 50px;
-  width: 130px;
   background: url('../images/logow.png') 7px 6px no-repeat;
-}
-#logo > a
-{
-  text-indent: -10000px;
-  height: 100%;
-  width: 100%;
-  display: block;
-}
-#nav-left,
-#nav-right
-{
-  position: absolute;
-  height: 100%;
-}
-#nav-left
-{
-  left: 130px;
-}
-#nav-right
-{
-  right: 0px;
-}
-.nav-item
-{
-  float: left;
-}
-.nav-item > a
-{
-  display: block;
-  height: 26px;
-  padding: 12px 10px;
-}
-#logo > a:hover,
-.nav-item > a:hover
-{
-  margin: 0 -1px;
-  border-left: solid 1px black;
-  border-right: solid 1px black;
 }
