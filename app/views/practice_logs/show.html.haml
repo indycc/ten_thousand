@@ -1,0 +1,7 @@
+%p#notice= notice
+
+%div Occurred on:  #{@practice_log.occurred_on}
+%div Duration:   #{@practice_log.duration}
+=link_to 'Edit', edit_practice_log_path(@practice_log)
+|
+=link_to 'Back', practice_logs_path
