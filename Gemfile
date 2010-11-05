@@ -35,5 +35,6 @@ end
 
 gem 'omnisocial'
 gem 'haml'
-gem 'mongrel'
-gem 'ruby-debug'
+gem 'mongrel', ">=1.2.0.beta"
+# gem 'ruby-debug'
+#gem 'oa-oauth', :require => 'omniauth/oauth'

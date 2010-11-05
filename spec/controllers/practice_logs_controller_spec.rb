@@ -35,9 +35,9 @@ describe PracticeLogsController do
         def mock_expertises(stubs={})
           @mock_expertises ||= mock_model(Expertise).as_null_object.tap { |expertise| expertise.stub(stubs) unless stubs.empty?}
         end
-      Expertise.stub(:all) {[ mock_expertises] }
+      Expertise.stub(:all) { mock_expertises }
       get :new
-      assigns(:expertises).first.should be(mock_expertises)
+      assigns(:expertises).first.should be(mock_expertises.first)
     end
   end
 
@@ -69,7 +69,13 @@ describe PracticeLogsController do
       end
       
       it "creates using minutes as the default unit of measure" do
-        pending
+        post :create, :practice_log => {:expertise_id => 1, :duration => "15", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should be(15)
+      end
+      
+      it "handles hours with colons" do
+        post :create, :practice_log => {:expertise_id => 1, :duration => "1:15", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should be(75)
       end
       
     end

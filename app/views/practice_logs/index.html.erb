@@ -12,7 +12,7 @@
 
 <% @practice_logs.each do |practice_log| %>
   <tr>
-	<td></td><!-- TODO: Add once expertise is merged in -->
+	<td><%= practice_log.expertise.name %></td>
 	<td><%= practice_log.occurred_on %></td>
 	<td><%= practice_log.duration %></td>
     <td><%= link_to 'Show', practice_log %></td>
