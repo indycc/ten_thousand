@@ -1,0 +1,13 @@
+= form_for(@practice_log) do |f|
+  - if @practice_log.errors.any?
+    #error_explanation
+      %h2= #{pluralize(@practice_log.errors.count, "error")} prohibited this practice_log from being saved:</h2>
+
+      %ul
+        - @practice_log.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field Occurred On: #{f.text_field :occurred_on}
+  .field Duration: #{f.text_field :duration}
+  .field Expertise: #{f.select :expertise_id, options_for_select(@expertises)}
+  .actions= f.submit
