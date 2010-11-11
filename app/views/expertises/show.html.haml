@@ -15,10 +15,10 @@ Minutes remaining:
     %th Duration
   -@expertise.practice_logs.each do |item|
     %tr
-      %td item.occurred_on
-      %td item.duration
-      %td link_to 'Edit' edit_practice_log_path(item)
-      %td link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete
+      %td= item.occurred_on
+      %td= item.duration
+      %td= link_to 'Edit', edit_practice_log_path(item)
+      %td= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete
 
 = link_to 'Edit', edit_expertise_path(@expertise)
 |
