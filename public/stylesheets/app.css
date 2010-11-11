@@ -15,3 +15,10 @@
 {
   background: url('../images/logow.png') 7px 6px no-repeat;
 }
+#content
+{
+  margin: 1.5em;
+  padding: 1em;
+  border: solid 3px #8d7;
+  background-color: #dfc;
+}

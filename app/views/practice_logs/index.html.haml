@@ -10,7 +10,7 @@
     %tr
     %td= practice_log.expertise.name
     %td= practice_log.occurred_on
-    %td= practice_log.duration
+    %td= format_time(practice_log.duration)
     %td= link_to 'Show', practice_log
     %td= link_to 'Edit', edit_practice_log_path(practice_log)
     %td= link_to 'Destroy', practice_log, :confirm => 'Are you sure?', :method => :delete

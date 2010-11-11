@@ -10,7 +10,7 @@
     #container
       #nav-header
         #logo
-          %a{:href => root_path}
+          %a{:href => dashboard_path}
             10,000
         #nav-left
           .nav-item
@@ -23,6 +23,13 @@
           .nav-item
             %a{:href => logout_path}
               sign out
+      #practice_log_entry
+        =form_for :practice_log, :url => practice_logs_path do |f|
+          =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today
+          =f.select :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }
+          =f.text_field :duration, :placeholder => 'Minutes'
+          =f.submit 'Log it!'
+
       #content
         - flash.each do |key, value|
           %div{:class => "flash #{key}"}
