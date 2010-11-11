@@ -44,7 +44,8 @@ class PracticeLogsController < ApplicationController
   def create
     @practice_log = PracticeLog.new(params[:practice_log])
     @practice_log.duration = fix_duration(params[:practice_log][:duration])
-
+    @practice_log.user = current_user
+    
     respond_to do |format|
       if @practice_log.save
         format.html { redirect_to(@practice_log, :notice => 'Practice log was successfully created.') }
