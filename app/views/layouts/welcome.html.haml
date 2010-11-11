@@ -14,8 +14,11 @@
             10,000
         #nav-right
           .nav-item
+            %a
+              sign in with
+          .nav-item
             %a#twitter_login{:href => '/auth/twitter'}
-              sign in with twitter
+              twitter
       #content
         - flash.each do |key, value|
           %div{:class => "flash #{key}"}

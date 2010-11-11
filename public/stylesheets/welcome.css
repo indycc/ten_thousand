@@ -9,15 +9,15 @@
 }
 #twitter_login
 {
-  background: url('../images/twitter_newbird_white.png') 15px 10px no-repeat;
+  background: url('../images/twitter_bird_text_white.png') 15px 13px no-repeat;
   text-indent: -10000px;
-  width: 43px;
+  width: 123px;
 }
-#nav-header a:hover
+#nav-header a:hover:link
 {
   background-color: #ae8;
 }
-#nav-header #logo a:hover
+#nav-header #logo a:hover:link
 {
   background-color: inherit;
 }

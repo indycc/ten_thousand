@@ -54,8 +54,8 @@ body
   height: 26px;
   padding: 12px 10px;
 }
-#logo > a:hover,
-.nav-item > a:hover
+#logo > a:link:hover,
+.nav-item > a:link:hover
 {
   margin: 0 -1px;
   border-left: solid 1px black;
