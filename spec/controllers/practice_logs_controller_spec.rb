@@ -7,6 +7,11 @@ describe PracticeLogsController do
       practice_log.stub(stubs) unless stubs.empty?
     end
   end
+  def mock_user(stubs={})
+    (@mock_user ||= mock_model(User).as_null_object).tap do |user|
+      user.stub(stubs) unless stubs.empty?
+    end
+  end
 
   describe "GET index" do
     it "assigns all practice_logs as @practice_logs" do
@@ -65,7 +70,10 @@ describe PracticeLogsController do
       end
       
       it "adds the current user to the practice_log" do
-        pending
+        session[:user_id] = 23
+        User.stub(:find_by_id){mock_user(:id => 23)}
+        post :create, :practice_log => {:expertise_id => 1, :duration => "15", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).user_id.should == 23
       end
       
       it "creates using minutes as the default unit of measure" do
