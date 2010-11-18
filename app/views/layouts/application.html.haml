@@ -4,7 +4,9 @@
     %title
       \&#x2182
     = stylesheet_link_tag 'common', 'app'
+    = stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css'
     = javascript_include_tag :defaults
+    = javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.min.js'
     = csrf_meta_tag
   %body
     #container
@@ -25,8 +27,8 @@
               sign out
       #practice_log_entry
         =form_for :practice_log, :url => practice_logs_path do |f|
-          =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today
           =f.select :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }
+          =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today, :class => 'datepicker'
           =f.text_field :duration, :placeholder => 'Minutes'
           =f.submit 'Log it!'
 
