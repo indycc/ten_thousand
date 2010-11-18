@@ -45,8 +45,8 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.save
-        format.html { redirect_to(@expertise, :notice => 'Expertise was successfully created.') }
-        format.xml  { render :xml => @expertise, :status => :created, :location => @expertise }
+        format.html { redirect_to(expertises_path, :notice => 'Expertise was successfully created.') }
+        format.xml  { render :xml => expertises_path, :status => :created, :location => expertises_path }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @expertise.errors, :status => :unprocessable_entity }
@@ -61,7 +61,7 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.update_attributes(params[:expertise])
-        format.html { redirect_to(@expertise, :notice => 'Expertise was successfully updated.') }
+        format.html { redirect_to(expertises_path, :notice => 'Expertise was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
