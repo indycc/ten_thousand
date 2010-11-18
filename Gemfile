@@ -35,3 +35,4 @@ end
 
 gem 'oa-openid'
 gem 'haml'
+gem 'mongrel'

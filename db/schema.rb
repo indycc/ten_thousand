@@ -19,4 +19,11 @@ ActiveRecord::Schema.define(:version => 20101021112124) do
     t.datetime "updated_at"
   end
 
+  create_table "expertises", :force => true do |t|
+    t.string   "name"
+    t.integer  "total_minutes_remaining"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end
