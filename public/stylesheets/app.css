@@ -1,0 +1,24 @@
+#nav-header
+{
+  background: url('../images/toolbarbg.png') repeat-x;
+}
+#nav-header,
+#nav-header a
+{
+  color: white;
+}
+#nav-header a:hover
+{
+  color: #dfc;
+}
+#logo
+{
+  background: url('../images/logow.png') 7px 6px no-repeat;
+}
+#content
+{
+  margin: 1.5em;
+  padding: 1em;
+  border: solid 3px #8d7;
+  background-color: #dfc;
+}

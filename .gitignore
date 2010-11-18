@@ -1,6 +1,11 @@
 .bundle
+*~
+.*.sw?
+.idea
+.idea/*
 db/*.sqlite3
 log/*.log
 tmp/**/*
 nbproject
 nbproject/*
+tmp/restart.txt

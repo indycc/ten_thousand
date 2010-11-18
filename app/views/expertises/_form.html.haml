@@ -1,17 +1,19 @@
-<%= form_for(@expertise) do |f| %>
-  <% if @expertise.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@expertise.errors.count, "error") %> prohibited this expertise from being saved:</h2>
+= form_for(@expertise) do |f|
+  -if @expertise.errors.any?
+    #error_explanation
+      %h2 = pluralize(@expertise.errors.count, "error") prohibited this expertise from being saved:
 
-      <ul>
-      <% @expertise.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+      %ul
+      -@expertise.errors.full_messages.each do |msg|
+        %li = msg
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :minutes_until_expert
+    %br/
+    = f.text_field :total_minutes_remaining
+  .actions
+    = f.submit

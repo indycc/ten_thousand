@@ -25,7 +25,7 @@ class ExpertisesController < ApplicationController
   # GET /expertises/new.xml
   def new
     @expertise = Expertise.new
-
+    @total_hours_remaining = @expertise.total_minutes_remaining/60
 
     respond_to do |format|
       format.html # new.html.erb
