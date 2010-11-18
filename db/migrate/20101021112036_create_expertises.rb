@@ -10,4 +10,4 @@ class CreateExpertises < ActiveRecord::Migration
   def self.down
     drop_table :expertises
   end
-end
+end 

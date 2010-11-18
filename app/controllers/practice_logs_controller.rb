@@ -45,11 +45,12 @@ class PracticeLogsController < ApplicationController
     @practice_log = PracticeLog.new(params[:practice_log])
     @practice_log.duration = fix_duration(params[:practice_log][:duration])
     @practice_log.user = current_user
+    @practice_logs = PracticeLog.all
     
     respond_to do |format|
       if @practice_log.save
-        format.html { redirect_to(@practice_log, :notice => 'Practice log was successfully created.') }
-        format.xml  { render :xml => @practice_log, :status => :created, :location => @practice_log }
+        format.html { redirect_to(practice_logs_path, :notice => 'Practice log was successfully created.') }
+        format.xml  { render :xml => practice_logs_path, :status => :created, :location => practice_logs_path }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @practice_log.errors, :status => :unprocessable_entity }
@@ -66,7 +67,7 @@ class PracticeLogsController < ApplicationController
 
     respond_to do |format|
       if @practice_log.update_attributes(params[:practice_log])
-        format.html { redirect_to(@practice_log, :notice => 'Practice log was successfully updated.') }
+        format.html { redirect_to(practice_logs_path, :notice => 'Practice log was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
