@@ -2,7 +2,7 @@ class PracticeLog < ActiveRecord::Base
   belongs_to :expertise
   belongs_to :user
   def practice_duration
-    number = duration
+    number = duration || 0
     ftime = ""
      
     hours = (number / 60).to_i
