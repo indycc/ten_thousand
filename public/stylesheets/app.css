@@ -22,3 +22,16 @@
   border: solid 3px #8d7;
   background-color: #dfc;
 }
+
+#practice_log_occurred_on
+{
+  width: 8em;
+}
+#practice_log_expertise_id
+{
+  width: 20em;
+}
+#practice_log_duration
+{
+  width: 6em;
+}
