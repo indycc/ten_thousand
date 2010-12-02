@@ -27,7 +27,7 @@
         =form_for :practice_log, :url => practice_logs_path do |f|
           =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today
           =f.select :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }
-          =f.text_field :duration, :placeholder => 'Minutes'
+          =f.text_field :duration, :placeholder => 'Minutes or Hours:Minutes'
           =f.submit 'Log it!'
 
       #content

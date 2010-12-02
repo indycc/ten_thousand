@@ -12,6 +12,16 @@ describe PracticeLogsController do
       user.stub(stubs) unless stubs.empty?
     end
   end
+  
+  it "edit field should repopulate with hour:minute format" do
+    pending
+  end
+  it "should edit field should not influence the add log field at top of page" do
+    pending
+  end
+  it "should display a -pick one- default in the quick add form" do
+    pending
+  end
 
   describe "GET index" do
     it "assigns all practice_logs as @practice_logs" do
@@ -66,7 +76,7 @@ describe PracticeLogsController do
       it "redirects to the created practice_log" do
         PracticeLog.stub(:new) { mock_practice_log(:save => true) }
         post :create, :practice_log => {}
-        response.should redirect_to(practice_log_url(mock_practice_log))
+        response.should redirect_to(practice_logs_url())
       end
       
       it "adds the current user to the practice_log" do
@@ -122,7 +132,7 @@ describe PracticeLogsController do
       it "redirects to the practice_log" do
         PracticeLog.stub(:find) { mock_practice_log(:update_attributes => true) }
         put :update, :id => "1"
-        response.should redirect_to(practice_log_url(mock_practice_log))
+        response.should redirect_to(practice_logs_url())
       end
     end
 
