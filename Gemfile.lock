@@ -37,6 +37,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    event-calendar (2.3.1)
     faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
@@ -124,6 +125,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  event-calendar
   haml-rails
   jquery-rails
   mongrel (>= 1.2.0.beta)

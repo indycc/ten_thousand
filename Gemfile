@@ -40,3 +40,4 @@ gem 'haml-rails'
 gem 'mongrel', ">=1.2.0.beta"
 # gem 'ruby-debug'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'event-calendar', :require => 'event_calendar'
