@@ -36,7 +36,7 @@ group :development, :test do
 end
 
 gem 'omnisocial'
-gem 'haml'
+gem 'haml-rails'
 gem 'mongrel', ">=1.2.0.beta"
 # gem 'ruby-debug'
 #gem 'oa-oauth', :require => 'omniauth/oauth'
