@@ -13,9 +13,6 @@ describe PracticeLogsController do
     end
   end
   
-  it "edit field should repopulate with hour:minute format" do
-    pending
-  end
   it "should edit field should not influence the add log field at top of page" do
     pending
   end
@@ -61,6 +58,11 @@ describe PracticeLogsController do
       PracticeLog.stub(:find).with("37") { mock_practice_log }
       get :edit, :id => "37"
       assigns(:practice_log).should be(mock_practice_log)
+    end
+    it "edit field should repopulate with hour:minute format" do
+      PracticeLog.stub(:find).with("37") { PracticeLog.new.tap{|a| a.duration = 75} }
+      get :edit, :id => "37"
+      assigns(:practice_log).practice_duration.should == "1:15"
     end
   end
 

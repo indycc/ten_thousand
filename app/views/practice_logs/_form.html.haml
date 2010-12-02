@@ -8,6 +8,6 @@
           %li= msg
 
   .field Occurred On: #{f.text_field :occurred_on}
-  .field Duration: #{f.text_field :duration}
+  .field Duration: #{f.text_field :practice_duration}
   .field Expertise: #{f.select :expertise_id, options_for_select(@expertises)}
   .actions= f.submit
