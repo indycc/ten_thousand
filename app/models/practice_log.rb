@@ -1,6 +1,9 @@
 class PracticeLog < ActiveRecord::Base
   belongs_to :expertise
   belongs_to :user
+
+  scope :between, lambda { |start_date, end_date| where :occurred_on => start_date..end_date }
+
   def practice_duration
     number = duration || 0
     ftime = ""

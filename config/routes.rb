@@ -1,5 +1,7 @@
 TenThousand::Application.routes.draw do
-  get "reports/calendar"
+  controller :reports do
+    get "reports/calendar(/:year/:month)", :as => 'calendar_report', :action => 'calendar'
+  end
 
   resources :expertises
   resources :practice_logs
