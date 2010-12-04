@@ -80,6 +80,13 @@ describe PracticeLogsController do
         post :create, :practice_log => {}
         response.should redirect_to(practice_logs_url())
       end
+
+      it "redirects back if created from quick-add bar" do
+        PracticeLog.stub(:new) { mock_practice_log(:safe => true) }
+        request.env['HTTP_REFERER'] = '/back'
+        post :create, :practice_log => {}, :quick_add => 'true'
+        response.should redirect_to('/back')
+      end
       
       it "adds the current user to the practice_log" do
         session[:user_id] = 23

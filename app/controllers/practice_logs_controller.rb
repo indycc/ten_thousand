@@ -49,7 +49,7 @@ class PracticeLogsController < ApplicationController
     
     respond_to do |format|
       if @practice_log.save
-        format.html { redirect_to(practice_logs_path, :notice => 'Practice log was successfully created.') }
+        format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => 'Practice log was successfully created.') }
         format.xml  { render :xml => practice_logs_path, :status => :created, :location => practice_logs_path }
       else
         format.html { render :action => "new" }
