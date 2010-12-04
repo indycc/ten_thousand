@@ -41,4 +41,9 @@ describe PracticeLog do
       end
     end
   end
+  it 'has event calendar' do
+    # PracticeLog needs to do has_event_calendar. To ensure it's (mostly) working
+    # right, we'll just call the model method that event_calendar needs.
+    PracticeLog.event_strips_for_month(Date.today).should_not be_nil
+  end
 end

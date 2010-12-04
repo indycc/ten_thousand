@@ -2,7 +2,15 @@ class PracticeLog < ActiveRecord::Base
   belongs_to :expertise
   belongs_to :user
 
-  scope :between, lambda { |start_date, end_date| where :occurred_on => start_date..end_date }
+  has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
+  def all_day ; true ; end
+  def color
+    %W(x red green blue orange purple fuscia pink brown black gray)[expertise_id]
+  end
+
+  def name
+    expertise.name
+  end
 
   def practice_duration
     number = duration || 0

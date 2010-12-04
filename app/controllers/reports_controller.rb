@@ -1,11 +1,9 @@
 class ReportsController < ApplicationController
   def calendar
-    @start = Date.new params[:year].to_i, params[:month].to_i, 1
-    @end   = @start.at_end_of_month
-    @practices = PracticeLog.between @start, @end
-  rescue ArgumentError => e
-    logger.warn e
-    redirect_to calendar_report_path(:year => Date.today.year, :month => Date.today.month)
+    @month = (params[:month] || (Time.zone || Time).now.month).to_i
+    @year = (params[:year] || (Time.zone || Time).now.year).to_i
+    @shown_month = Date.civil(@year, @month)
+    @event_strips = PracticeLog.event_strips_for_month(@shown_month)
   end
 
 end
