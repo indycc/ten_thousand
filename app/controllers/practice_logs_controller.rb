@@ -1,4 +1,6 @@
 class PracticeLogsController < ApplicationController
+  require_user
+
   # GET /practice_logs
   # GET /practice_logs.xml
   def index

@@ -1,2 +1,0 @@
-class TempAuthResultsController < ApplicationController
-end
