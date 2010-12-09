@@ -1,4 +1,6 @@
 class ExpertisesController < ApplicationController
+  require_user
+
   # GET /expertises
   # GET /expertises.xml
   def index

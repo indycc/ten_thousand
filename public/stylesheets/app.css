@@ -11,6 +11,20 @@
 {
   color: #dfc;
 }
+#application-nav
+{
+  float:right;
+}
+#application-nav .nav-item
+{
+  text-decoration: none;
+  font-size: 18px;
+}
+#application-nav a
+{
+  text-decoration: none;
+  color: #8d7;
+}
 #logo
 {
   background: url('../images/logow.png') 7px 6px no-repeat;
