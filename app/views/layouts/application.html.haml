@@ -33,7 +33,7 @@
         -# TODO:
         -#  1. Change from f.select to an autocomplete text box.
         -#  2. Make this an AJAX post.
-        =form_for :practice_log, :url => practice_logs_path do |f|
+        =form_for PracticeLog.new, :url => practice_logs_path do |f|
           %input{:type => 'hidden', :name => 'quick_add', :value => 'true'}
           =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today, :class => 'datepicker'
           =f.select :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }
