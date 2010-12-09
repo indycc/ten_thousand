@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe PracticeLogsController do
-
   def mock_practice_log(stubs={})
     (@mock_practice_log ||= mock_model(PracticeLog).as_null_object).tap do |practice_log|
       practice_log.stub(stubs) unless stubs.empty?
@@ -13,9 +12,14 @@ describe PracticeLogsController do
     end
   end
   
-  it "should edit field should not influence the add log field at top of page" do
-    pending
+  before(:each) do
+    u = User.new()
+    u.id = 23
+    session[:user_id] = u.id
+    User.stub(:find).and_return(u)
+    User.stub(:find_by_id).and_return(u)
   end
+  
   it "should display a -pick one- default in the quick add form" do
     pending
   end
@@ -90,7 +94,7 @@ describe PracticeLogsController do
       
       it "adds the current user to the practice_log" do
         session[:user_id] = 23
-        User.stub(:find_by_id){mock_user(:id => 23)}
+        User.stub!(:find_by_id){mock_user(:id => 23)}
         post :create, :practice_log => {:expertise_id => 1, :duration => "15", :occurred_on => "10/10/2010"}
         assigns(:practice_log).user_id.should == 23
       end
