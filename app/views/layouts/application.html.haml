@@ -32,7 +32,7 @@
           %input{:type => 'hidden', :name => 'quick_add', :value => 'true'}
           =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today, :class => 'datepicker'
           =f.select :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }
-          =f.text_field :duration, :placeholder => 'Minutes or Hours:Minutes'
+          =f.text_field :practice_duration, :placeholder => 'Minutes or Hours:Minutes'
           =f.submit 'Log it!'
 
       #content

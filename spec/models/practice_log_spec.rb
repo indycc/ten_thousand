@@ -39,6 +39,14 @@ describe PracticeLog do
       it "should do bad things with bad input" do
         lambda { @p_log.practice_duration = "a"}.should raise_error
       end
+      it "should error when no duration is specified" do
+        @p_log.duration = 0
+        @p_log.practice_duration = ""
+        lambda { 
+          @p_log.save!
+        }.should raise_error
+        
+      end
     end
   end
   it 'has event calendar' do

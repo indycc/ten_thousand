@@ -1,6 +1,7 @@
 class PracticeLog < ActiveRecord::Base
   belongs_to :expertise
   belongs_to :user
+  validates :duration, :presence => true, :numericality => true
 
   has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
   def all_day ; true ; end
@@ -23,6 +24,7 @@ class PracticeLog < ActiveRecord::Base
     ftime +=  number.to_s if number > 0
     return ftime
   end
+
   def practice_duration=(ftime)
     if ftime.include?(":")
       hours, minutes = ftime.split(":")
@@ -32,6 +34,8 @@ class PracticeLog < ActiveRecord::Base
     else
       if ftime.match /^\d+$/
         self.duration = ftime.to_i
+      elsif ftime.empty?
+        self.duration = nil
       else
         raise "Duration should be a number"
       end
