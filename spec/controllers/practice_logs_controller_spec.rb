@@ -95,17 +95,17 @@ describe PracticeLogsController do
       it "adds the current user to the practice_log" do
         session[:user_id] = 23
         User.stub!(:find_by_id){mock_user(:id => 23)}
-        post :create, :practice_log => {:expertise_id => 1, :duration => "15", :occurred_on => "10/10/2010"}
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "15", :occurred_on => "10/10/2010"}
         assigns(:practice_log).user_id.should == 23
       end
       
       it "creates using minutes as the default unit of measure" do
-        post :create, :practice_log => {:expertise_id => 1, :duration => "15", :occurred_on => "10/10/2010"}
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "15", :occurred_on => "10/10/2010"}
         assigns(:practice_log).duration.should be(15)
       end
       
       it "handles hours with colons" do
-        post :create, :practice_log => {:expertise_id => 1, :duration => "1:15", :occurred_on => "10/10/2010"}
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "1:15", :occurred_on => "10/10/2010"}
         assigns(:practice_log).duration.should be(75)
       end
       
