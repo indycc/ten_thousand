@@ -45,7 +45,6 @@ class PracticeLogsController < ApplicationController
   # POST /practice_logs.xml
   def create
     @practice_log = PracticeLog.new(params[:practice_log])
-    @practice_log.practice_duration = params[:practice_log][:practice_duration] || params[:practice_log][:duration]
     @practice_log.user = current_user
     @practice_logs = PracticeLog.all
     
