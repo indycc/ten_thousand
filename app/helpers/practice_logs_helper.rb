@@ -2,7 +2,6 @@ module PracticeLogsHelper
 
   def format_time(number)
     ftime = ""
-     
     hours = (number / 60).to_i
     ftime = pluralize(hours, "hour") if hours > 0
     number = number - (hours * 60)

@@ -45,7 +45,7 @@ class PracticeLogsController < ApplicationController
   # POST /practice_logs.xml
   def create
     @practice_log = PracticeLog.new(params[:practice_log])
-    @practice_log.practice_duration = params[:practice_log][:duration]
+    @practice_log.practice_duration = params[:practice_log][:practice_duration] || params[:practice_log][:duration]
     @practice_log.user = current_user
     @practice_logs = PracticeLog.all
     
@@ -54,7 +54,13 @@ class PracticeLogsController < ApplicationController
         format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => 'Practice log was successfully created.') }
         format.xml  { render :xml => practice_logs_path, :status => :created, :location => practice_logs_path }
       else
-        format.html { render :action => "new" }
+        format.html {
+          if(params[:quick_add])
+            redirect_to :back, :notice => "Please fill the quick add form completely"
+          else 
+            render :action => "new"
+          end
+           }
         format.xml  { render :xml => @practice_log.errors, :status => :unprocessable_entity }
       end
     end

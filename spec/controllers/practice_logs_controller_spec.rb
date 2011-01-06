@@ -20,8 +20,17 @@ describe PracticeLogsController do
     User.stub(:find_by_id).and_return(u)
   end
   
-  it "should display a -pick one- default in the quick add form" do
-    pending
+  it "should not commit when a nil expertise is submitted" do    
+    #PracticeLog.stub(:new) { mock_practice_log(:safe => true) }
+    request.env['HTTP_REFERER'] = '/back'
+    lambda { 
+      post :create, :practice_log => {:expertise_id => nil, :practice_duration => "15", :occurred_on => "10/10/2010"}, :quick_add => 'true'
+    }.should_not raise_error()
+    
+    #puts assigns(:practice_log).errors
+    assigns(:practice_log).errors.should_not be_empty
+    
+              
   end
 
   describe "GET index" do

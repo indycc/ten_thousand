@@ -1,6 +1,7 @@
 class PracticeLog < ActiveRecord::Base
   belongs_to :expertise
   belongs_to :user
+  validates :expertise_id, :presence => true, :numericality => true
   validates :duration, :presence => true, :numericality => true
 
   has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
