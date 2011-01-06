@@ -70,8 +70,6 @@ class PracticeLogsController < ApplicationController
   # PUT /practice_logs/1.xml
   def update
     @practice_log = PracticeLog.find(params[:id])
-    # TODO : 
-    #params[:practice_log][:duration] = fix_duration(params[:practice_log][:duration])
 
     respond_to do |format|
       if @practice_log.update_attributes(params[:practice_log])
@@ -96,16 +94,4 @@ class PracticeLogsController < ApplicationController
     end
   end
   
-  private
-  def fix_duration(time_formatted)
-    time_formatted
-#    if ((not time_formatted.nil?) and time_formatted.match(":") )
-#      match = time_formatted.match('(\d{1,2}):(\d{1,2})')
-#      hours_part = match[1].to_i * 60
-#      minutes_part = match[2].to_i
-#      hours_part + minutes_part
-#    else
-#       time_formatted.to_i
-#    end
-  end
 end
