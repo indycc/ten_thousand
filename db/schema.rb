@@ -10,13 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106125103) do
+ActiveRecord::Schema.define(:version => 20110113124439) do
 
   create_table "expertises", :force => true do |t|
     t.string   "name"
-    t.integer  "total_minutes_remaining"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "seconds_required"
     t.integer  "user_id"
   end
 
