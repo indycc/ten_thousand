@@ -1,6 +1,8 @@
 class Expertise < ActiveRecord::Base
-  # TODO: belongs_to :user
+  belongs_to :user
   has_many :practice_logs
+
+  validates_presence_of :user_id
 
   def initialize(attribs={})
     super(attribs)

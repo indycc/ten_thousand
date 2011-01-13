@@ -44,6 +44,7 @@ class ExpertisesController < ApplicationController
   # POST /expertises.xml
   def create
     @expertise = Expertise.new(params[:expertise])
+    @expertise.user = current_user
 
     respond_to do |format|
       if @expertise.save

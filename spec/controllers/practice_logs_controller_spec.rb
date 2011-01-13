@@ -84,6 +84,7 @@ describe PracticeLogsController do
     describe "with valid params" do
       it "assigns a newly created practice_log as @practice_log" do
         PracticeLog.stub(:new).with({'these' => 'params'}) { mock_practice_log(:save => true) }
+
         post :create, :practice_log => {'these' => 'params'}
         assigns(:practice_log).should be(mock_practice_log)
       end
