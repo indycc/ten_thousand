@@ -37,7 +37,8 @@ describe PracticeLog do
     context "Jerk move" do
       before(:each) { @p_log.duration = 75}
       it "should do bad things with bad input" do
-        lambda { @p_log.practice_duration = "a"}.should raise_error
+        @p_log.practice_duration = "a"
+        lambda { @p_log.save! }.should raise_error
       end
       it "should error when no duration is specified" do
         @p_log.duration = 0

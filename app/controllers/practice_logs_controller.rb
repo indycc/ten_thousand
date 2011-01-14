@@ -55,7 +55,9 @@ class PracticeLogsController < ApplicationController
       else
         format.html {
           if(params[:quick_add])
-            redirect_to :back, :notice => "Please fill the quick add form completely"
+            errorMessages = ""
+            @practice_log.errors.each_full { |msg| errorMessages += "<li>#{msg}</li>" }
+            redirect_to :back, :notice => "Invalid Input in Quick Add form:<ul> #{errorMessages} </ul>"
           else 
             render :action => "new"
           end

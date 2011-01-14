@@ -27,6 +27,7 @@ class PracticeLog < ActiveRecord::Base
   end
 
   def practice_duration=(ftime)
+    self.duration = ftime
     if ftime.include?(":")
       hours, minutes = ftime.split(":")
       total_duration = hours.to_i * 60
@@ -37,8 +38,6 @@ class PracticeLog < ActiveRecord::Base
         self.duration = ftime.to_i
       elsif ftime.empty?
         self.duration = nil
-      else
-        raise "Duration should be a number"
       end
     end
   end
