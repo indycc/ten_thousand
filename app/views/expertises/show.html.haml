@@ -14,7 +14,7 @@ Hours remaining:
   -@expertise.practice_logs.each do |item|
     %tr
       %td= item.occurred_on
-      %td= item.duration
+      %td= format_time(item.duration)
       %td= link_to 'Edit', edit_practice_log_path(item)
       %td= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete
 

@@ -39,6 +39,7 @@ class PracticeLogsController < ApplicationController
   def edit
     @practice_log = PracticeLog.find(params[:id])
     @expertises = Expertise.all.collect{ |e| [e.name, e.id] }
+    @previousUrl = request.env['HTTP_REFERER']    
   end
 
   # POST /practice_logs
