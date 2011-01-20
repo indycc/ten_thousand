@@ -27,6 +27,7 @@ class ExpertisesController < ApplicationController
   # GET /expertises/new.xml
   def new
     @expertise = Expertise.new
+    @expertise.color = Expertise.pick_default_color_for(current_user)
 
     respond_to do |format|
       format.html # new.html.erb

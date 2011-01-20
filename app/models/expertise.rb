@@ -14,6 +14,10 @@ class Expertise < ActiveRecord::Base
     seconds_remaining / 3600
   end
 
+  def self.pick_default_color_for user
+    %W(red green blue orange purple fuscia pink brown black gray)[user.expertises.count]
+  end
+
   private
   def set_defaults
     self.seconds_required ||= 10000.hours
