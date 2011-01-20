@@ -3,10 +3,12 @@
 
 %table
   %tr
+    %th
     %th Name
     %th Hours Remaining
   -@expertises.each do |expertise|
     %tr
+      %td= expertise.color
       %td= expertise.name
       %td= expertise.hours_remaining
       %td= link_to 'Show', expertise

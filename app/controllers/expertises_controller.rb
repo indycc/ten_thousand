@@ -61,6 +61,7 @@ class ExpertisesController < ApplicationController
   # PUT /expertises/1.xml
   def update
     @expertise = Expertise.find(params[:id])
+    @expertise.user ||= current_user
 
     respond_to do |format|
       if @expertise.update_attributes(params[:expertise])

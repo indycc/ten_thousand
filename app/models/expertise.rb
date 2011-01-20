@@ -1,7 +1,7 @@
 class Expertise < ActiveRecord::Base
   belongs_to :user
   has_many :practice_logs
-  attr_accessible :name
+  attr_accessible :name, :color
   after_initialize :set_defaults
   validates_presence_of :user_id
   validates_format_of :color, :with => /^(#([0-9a-f]{3}|[0-9a-f]{6})|[a-z]+)$/i

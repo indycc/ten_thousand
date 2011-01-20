@@ -1,15 +1,21 @@
 = form_for(@expertise) do |f|
   -if @expertise.errors.any?
     #error_explanation
-      %h2 = pluralize(@expertise.errors.count, "error") prohibited this expertise from being saved:
-
+      %h2
+        = pluralize(@expertise.errors.count, "error")
+        prohibited this expertise from being saved:
       %ul
       -@expertise.errors.full_messages.each do |msg|
-        %li = msg
+        %li
+          = msg
 
   .field
     = f.label :name
     %br/
     = f.text_field :name
+  .field
+    = f.label :color
+    %br/
+    = f.text_field :color
   .actions
     = f.submit
