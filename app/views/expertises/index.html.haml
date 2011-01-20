@@ -8,7 +8,7 @@
   -@expertises.each do |expertise|
     %tr
       %td= expertise.name
-      %td= expertise.total_minutes_remaining/60
+      %td= expertise.hours_remaining
       %td= link_to 'Show', expertise
       %td= link_to 'Edit', edit_expertise_path(expertise)
       %td= link_to 'Destroy', expertise, :confirm => 'Are you sure?', :method => :delete

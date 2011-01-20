@@ -5,6 +5,9 @@ class PracticeLog < ActiveRecord::Base
   validates :duration, :presence => true, :numericality => true
 
   has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
+
+  after_initialize :set_defaults
+
   def all_day ; true ; end
   def color
     %W(x red green blue orange purple fuscia pink brown black gray)[expertise_id]
@@ -15,30 +18,32 @@ class PracticeLog < ActiveRecord::Base
   end
 
   def practice_duration
-    number = duration || 0
-    ftime = ""
-     
-    hours = (number / 60).to_i
-    ftime = hours.to_s if hours> 0
-    number = number - (hours * 60)
-    ftime += ":" if hours > 0 && number > 0 
-    ftime +=  number.to_s if number > 0
-    return ftime
+    return nil if duration.nil?
+    minutes, seconds = duration / 60, duration % 60
+    hours, minutes = minutes / 60, minutes % 60
+    
+    case
+    when hours == 0
+      "#{minutes}"
+    else
+      "#{hours}:#{minutes}"
+    end
   end
 
   def practice_duration=(ftime)
-    self.duration = ftime
-    if ftime.include?(":")
-      hours, minutes = ftime.split(":")
-      total_duration = hours.to_i * 60
-      total_duration += minutes.to_i
-      self.duration = total_duration
-    else
-      if ftime.match /^\d+$/
-        self.duration = ftime.to_i
-      elsif ftime.empty?
-        self.duration = nil
+    self.duration =
+      case ftime
+      when /^\d+$/, Numeric
+        ftime.to_i.minutes
+      when /^(\d+):(\d+)$/
+        $1.to_i.hours + $2.to_i.minutes
+      else
+        nil
       end
-    end
+  end
+
+  private
+  def set_defaults
+    self.duration ||= 0
   end
 end

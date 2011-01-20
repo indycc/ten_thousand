@@ -27,7 +27,6 @@ class ExpertisesController < ApplicationController
   # GET /expertises/new.xml
   def new
     @expertise = Expertise.new
-    @total_hours_remaining = @expertise.total_minutes_remaining/60
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,6 +43,7 @@ class ExpertisesController < ApplicationController
   # POST /expertises.xml
   def create
     @expertise = Expertise.new(params[:expertise])
+    @expertise.user = current_user
 
     respond_to do |format|
       if @expertise.save

@@ -73,7 +73,7 @@ describe PracticeLogsController do
       assigns(:practice_log).should be(mock_practice_log)
     end
     it "edit field should repopulate with hour:minute format" do
-      PracticeLog.stub(:find).with("37") { PracticeLog.new.tap{|a| a.duration = 75} }
+      PracticeLog.stub(:find).with("37") { PracticeLog.new.tap{|a| a.duration = 75.minutes } }
       get :edit, :id => "37"
       assigns(:practice_log).practice_duration.should == "1:15"
     end
@@ -84,6 +84,7 @@ describe PracticeLogsController do
     describe "with valid params" do
       it "assigns a newly created practice_log as @practice_log" do
         PracticeLog.stub(:new).with({'these' => 'params'}) { mock_practice_log(:save => true) }
+
         post :create, :practice_log => {'these' => 'params'}
         assigns(:practice_log).should be(mock_practice_log)
       end
@@ -110,12 +111,12 @@ describe PracticeLogsController do
       
       it "creates using minutes as the default unit of measure" do
         post :create, :practice_log => {:expertise_id => 1, :practice_duration => "15", :occurred_on => "10/10/2010"}
-        assigns(:practice_log).duration.should be(15)
+        assigns(:practice_log).duration.should == 15.minutes
       end
       
       it "handles hours with colons" do
         post :create, :practice_log => {:expertise_id => 1, :practice_duration => "1:15", :occurred_on => "10/10/2010"}
-        assigns(:practice_log).duration.should be(75)
+        assigns(:practice_log).duration.should == 75.minutes
       end
       
     end

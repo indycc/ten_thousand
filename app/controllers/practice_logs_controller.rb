@@ -44,6 +44,7 @@ class PracticeLogsController < ApplicationController
   # POST /practice_logs
   # POST /practice_logs.xml
   def create
+
     @practice_log = PracticeLog.new(params[:practice_log])
     @practice_log.user = current_user
     @practice_logs = PracticeLog.all
