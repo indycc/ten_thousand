@@ -4,6 +4,7 @@ class Expertise < ActiveRecord::Base
   attr_accessible :name
   after_initialize :set_defaults
   validates_presence_of :user_id
+  validates_format_of :color, :with => /^(#([0-9a-f]{3}|[0-9a-f]{6})|[a-z]+)$/i
 
   def seconds_remaining
     seconds_required - practice_logs.sum(:duration)
