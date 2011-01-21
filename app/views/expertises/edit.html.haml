@@ -1,7 +1,6 @@
-%h1
-  Editing expertise
+%h1= t('ccicc.editing', :type => Expertise.human_name)
 
 = render 'form'
 
-= link_to 'Show', @expertise
-= link_to 'Back', expertises_path
+= link_to t('ccicc.show'), @expertise
+= link_to t('ccicc.back'), expertises_path

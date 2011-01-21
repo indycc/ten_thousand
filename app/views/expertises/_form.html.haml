@@ -2,8 +2,7 @@
   -if @expertise.errors.any?
     #error_explanation
       %h2
-        = pluralize(@expertise.errors.count, "error")
-        prohibited this expertise from being saved:
+        = t('ccicc.errors.summary', :count => @expertise.errors.count, :type => Expertise.human_name.downcase)
       %ul
       -@expertise.errors.full_messages.each do |msg|
         %li

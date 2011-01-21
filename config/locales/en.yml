@@ -6,23 +6,20 @@ en:
     site_name: 10,000
     sign_in: sign in with
     sign_out: sign out
-    new_link: new %{type}
-    show: show
-    edit: edit
-    destroy: destroy
+    new: New %{type}
+    editing: Editing %{type}
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    back: Back
     confirm_destroy: Are you sure?
     pick_one: "-Pick One-"
+    duration_hint: Minutes or Hours:Minutes
+    quick_add: Log it!
+    errors:
+      summary:
+        one: 'An error prevented this %{type} from being saved:'
+        other: '%{count} errors prevented this %{type} from being saved:'
     reports:
       calendar:
         name: calendar
-    expertises:
-      name: expertise
-      columns:
-        name: name
-        hours_remaining: hours remaining
-    practice_logs:
-      name: practice log
-      duration_hint: Minutes or Hours:Minutes
-      quick_add: Log it!
-      columns:
-        occurred_on: date

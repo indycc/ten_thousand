@@ -1,19 +1,14 @@
-%h1
-  Practice Logs
+%h1= PracticeLog.human_name.pluralize
 
 %table
   %tr
-    %th Expertise
-    %th Occurred on
-    %th Duration
+    %th= Expertise.human_name
+    %th= PracticeLog.human_attribute_name :occurred_on
+    %th= PracticeLog.human_attribute_name :duration
   -@practice_logs.each do |practice_log|
     %tr
     %td= practice_log.expertise.name
     %td= practice_log.occurred_on
     %td= format_time(practice_log.duration)
-    <!-- %td= link_to 'Show', practice_log -->
-    %td= link_to 'Edit', edit_practice_log_path(practice_log)
-    %td= link_to 'Destroy', practice_log, :confirm => 'Are you sure?', :method => :delete
-
-%br/
-<!-- = link_to 'New Practice log', new_practice_log_path -->
+    %td= link_to t('ccicc.edit'), edit_practice_log_path(practice_log)
+    %td= link_to t('ccicc.destroy'), practice_log, :confirm => t('ccicc.confirm_destroy'), :method => :delete
