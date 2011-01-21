@@ -45,3 +45,10 @@
           %div{:class => "flash #{key}"}
             = value.html_safe
         =yield
+
+      #footer
+        #languages
+          %ul
+            -I18n.available_locales.each do |locale|
+              %li
+                =link_to locale, root_url(:locale => locale)
