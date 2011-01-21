@@ -11,14 +11,14 @@
       #nav-header
         #logo
           %a{:href => root_path}
-            10,000
+            = t('ccicc.site_name')
         #nav-right
           .nav-item
             %a
-              sign in with
+              =t('ccicc.sign_in')
           .nav-item
             %a#twitter_login{:href => '/auth/twitter'}
-              twitter
+              =t('ccicc.auth.twitter', :default => 'twitter')
       #content
         - flash.each do |key, value|
           %div{:class => "flash #{key}"}

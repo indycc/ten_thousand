@@ -11,23 +11,23 @@
     #container
       #nav-header
         #logo
-          %a{:href => dashboard_path}
-            10,000
+          %a{:href => dashboard_path, :title => t('ccicc.site_name')}
+            = t('ccicc.site_name')
         #nav-left
           .nav-item
             %a{:href => expertises_path}
-              expertises
+              = t('ccicc.expertises.name').pluralize
           .nav-item
             %a{:href => practice_logs_path}
-              practice
+              = t('ccicc.practice_logs.name').pluralize
         #nav-right
           .nav-item
             %a{:href => logout_path}
-              sign out
+              = t('ccicc.sign_out')
       #application-nav
         .nav-item
           %a{:href => calendar_report_path}
-            calendar
+            = t('ccicc.reports.calendar.name')
         
       #practice_log_entry
         -# TODO:
@@ -35,10 +35,10 @@
         -#  2. Make this an AJAX post.
         =form_for PracticeLog.new, :url => practice_logs_path do |f|
           %input{:type => 'hidden', :name => 'quick_add', :value => 'true'}
-          =f.text_field :occurred_on, :placeholder => 'Date', :value => Date.today, :class => 'datepicker'
-          =f.select( :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }, options = { :prompt => "-Pick One-"} )
-          =f.text_field :practice_duration, :placeholder => 'Minutes or Hours:Minutes'
-          =f.submit 'Log it!'
+          =f.text_field :occurred_on, :placeholder => t('ccicc.practice_logs.columns.occurred_on'), :value => Date.today, :class => 'datepicker'
+          =f.select( :expertise_id, Expertise.all.collect { |p| [p.name, p.id] }, options = { :prompt => t('ccicc.pick_one')} )
+          =f.text_field :practice_duration, :placeholder => t('ccicc.practice_logs.duration_hint')
+          =f.submit t('ccicc.practice_logs.quick_add')
 
       #content
         - flash.each do |key, value|

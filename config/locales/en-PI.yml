@@ -3,13 +3,26 @@
 
 en-PI:
   ccicc:
+    site_name: 10,000
+    sign_in: prove yer mettle by
+    sign_out: abandon ship!
     new_link: fashion yerself a %{type}
     show: expose
     edit: fix up
     destroy: burn
     confirm_destroy: Be ye sure?
+    pick_one: "-Pick yer poison-"
+    reports:
+      calendar:
+        name: tides
     expertises:
       name: parrrrfection
       columns:
         name: be called
         hours_remaining: turns o' the clock to go
+    practice_logs:
+      name: tries
+      duration_hint: Minutes or Hours:Minutes
+      quick_add: Be done!
+      columns:
+        occurred_on: at the tide of
