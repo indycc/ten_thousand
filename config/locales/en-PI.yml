@@ -69,6 +69,8 @@ en-PI:
     errors:
       messages:
         invalid: be invalid.
+        blank: be blank.
+        not_a_number: be not a number.
         # See active_model/locale/en.yml and active_record/locale/en.yml for more.
   helpers:
     select:
@@ -78,11 +80,14 @@ en-PI:
       update: 'Fix up a %{model}'
       submit: 'Inscribe this %{model}'
   ccicc:
+    access_denied: Who goes there?
     site_name: 10,000
     sign_in: prove yer mettle by
     sign_out: abandon ship!
     new: Fashion yerself a %{type}
+    created: A %{type} was fashioned on yer deck.
     editing: Fixin' up a %{type}
+    updated: A %{type} was fixed up on yer deck.
     show: Expose
     edit: Fix up
     back: Return from whence ye came

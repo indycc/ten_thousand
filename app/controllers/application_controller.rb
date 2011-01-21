@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def deny_access
-    flash[:error] = 'You must be logged in to continue.'
+    flash[:error] = t('ccicc.access_denied')
     redirect_to root_path
   end
 

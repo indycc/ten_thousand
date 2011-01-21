@@ -3,11 +3,14 @@
 
 en:
   ccicc:
+    access_denied: You must be logged in to continue.
     site_name: 10,000
     sign_in: sign in with
     sign_out: sign out
     new: New %{type}
+    created: %{model} was successfully created.
     editing: Editing %{type}
+    updated: %{model} was successfully updated.
     show: Show
     edit: Edit
     destroy: Destroy
