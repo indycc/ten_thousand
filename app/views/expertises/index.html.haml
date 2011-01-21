@@ -1,19 +1,19 @@
 %h1
-  Expertises
+  =t('ccicc.expertises.name').pluralize.titlecase
 
 %table
   %tr
     %th
-    %th Name
-    %th Hours Remaining
+    %th=t('ccicc.expertises.columns.name').titlecase
+    %th=t('ccicc.expertises.columns.hours_remaining').titlecase
   -@expertises.each do |expertise|
     %tr
       %td= expertise.color
       %td= expertise.name
       %td= expertise.hours_remaining
-      %td= link_to 'Show', expertise
-      %td= link_to 'Edit', edit_expertise_path(expertise)
-      %td= link_to 'Destroy', expertise, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('ccicc.show').titlecase, expertise
+      %td= link_to t('ccicc.edit').titlecase, edit_expertise_path(expertise)
+      %td= link_to t('ccicc.destroy').titlecase, expertise, :confirm => t('ccicc.confirm_destroy'), :method => :delete
 <br />
 
-= link_to 'New Expertise', new_expertise_path
+= link_to t('ccicc.new_link', :type => t('ccicc.expertises.name')).titlecase, new_expertise_path

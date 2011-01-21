@@ -2,4 +2,14 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  ccicc:
+    new_link: new %{type}
+    show: show
+    edit: edit
+    destroy: destroy
+    confirm_destroy: Are you sure?
+    expertises:
+      name: expertise
+      columns:
+        name: name
+        hours_remaining: hours remaining
