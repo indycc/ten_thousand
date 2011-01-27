@@ -9,10 +9,9 @@ class PracticeLog < ActiveRecord::Base
 
   after_initialize :set_defaults
 
+  # Used by event calendar
   def all_day ; true ; end
-  def color
-    %W(x red green blue orange purple fuscia pink brown black gray)[expertise_id]
-  end
+  def color ; expertise.color ; end
 
   def name
     expertise.name

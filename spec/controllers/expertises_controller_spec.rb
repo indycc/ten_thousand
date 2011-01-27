@@ -12,10 +12,8 @@ describe ExpertisesController do
     end
   end
   def sign_in!
-    @mock_user = User.create!
-    session[:user_id] = @mock_user.id
-#    User.stub(:find).with('signed_in_user') { mock_user }
-#    session[:user_id] = 'signed_in_user'
+    session[:user_id] = '33'
+    User.stub(:find).with('33') { mock_user(:present? => true) }
   end
 
   before(:each) do
@@ -23,28 +21,37 @@ describe ExpertisesController do
   end
 
   it "GET index" do
-    Expertise.stub(:all) { [mock_expertise] }
+    mock_user.expertises.stub(:all) { [mock_expertise] }
     get :index
     assigns(:expertises).should eq([mock_expertise])
   end
 
   it "GET show" do
-    Expertise.stub(:find).with('42') { mock_expertise }
+    mock_user.expertises.stub(:find).with('42') { mock_expertise }
     get :show, :id => '42'
     assigns(:expertise).should be(mock_expertise)
   end
 
   describe "GET new" do
+    before { mock_user.expertises.stub(:count => 0) }
+
     it "assigns a new expertise" do
-      Expertise.stub(:new) { mock_expertise }
+      mock_user.expertises.stub(:build) { mock_expertise }
       get :new
       assigns(:expertise).should be(mock_expertise)
+    end
+
+    it "chooses a default color" do
+      Expertise.stub(:pick_default_color_for) { 'default-color' }
+      mock_user.expertises.stub(:build) { mock_expertise }
+      mock_expertise.should_receive(:color=).with('default-color')
+      get :new
     end
   end
 
   describe "GET edit" do
     it "loads the expertise" do
-      Expertise.stub(:find).with('42') { mock_expertise }
+      mock_user.expertises.stub(:find).with('42') { mock_expertise }
       get :edit, :id => '42'
       assigns(:expertise).should be(mock_expertise)
     end
@@ -53,19 +60,19 @@ describe ExpertisesController do
   describe "POST create" do
     describe "with valid params" do
       it "assigns a newly created expertise as @expertise" do
-        Expertise.stub(:new).with({'these' => 'params'}) { mock_expertise(:save => true) }
+        mock_user.expertises.stub(:build).with({'these' => 'params'}) { mock_expertise(:save => true) }
         post :create, :expertise => {'these' => 'params'}
         assigns(:expertise).should be(mock_expertise)
       end
 
       it "redirects to the created expertise" do
-        Expertise.stub(:new) { mock_expertise(:save => true) }
+        mock_user.expertises.stub(:build) { mock_expertise(:save => true) }
         post :create, :expertise => {}
         response.should redirect_to(expertises_url())
       end
       
       it "adds the current user to the expertise" do
-        Expertise.stub(:new) { mock_expertise(:save => true) }
+        mock_user.expertises.stub(:build) { mock_expertise(:save => true) }
         mock_expertise.expect('user_id=', mock_user.id)
         post :create, :expertise => {}
         assigns(:expertise).should be(mock_expertise)
@@ -75,13 +82,13 @@ describe ExpertisesController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved expertise as @expertise" do
-        Expertise.stub(:new).with({'these' => 'params'}) { mock_expertise(:save => false) }
+        mock_user.expertises.stub(:build).with({'these' => 'params'}) { mock_expertise(:save => false) }
         post :create, :expertise => {'these' => 'params'}
         assigns(:expertise).should be(mock_expertise)
       end
 
       it "re-renders the 'new' template" do
-        Expertise.stub(:new) { mock_expertise(:save => false) }
+        mock_user.expertises.stub(:build) { mock_expertise(:save => false) }
         post :create, :expertise => {}
         response.should render_template("new")
       end
@@ -93,19 +100,19 @@ describe ExpertisesController do
 
     describe "with valid params" do
       it "updates the requested expertise" do
-        Expertise.should_receive(:find).with("37") { mock_expertise }
+        mock_user.expertises.should_receive(:find).with("37") { mock_expertise }
         mock_expertise.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :expertise => {'these' => 'params'}
       end
 
       it "assigns the requested expertise as @expertise" do
-        Expertise.stub(:find) { mock_expertise(:update_attributes => true) }
+        mock_user.expertises.stub(:find) { mock_expertise(:update_attributes => true) }
         put :update, :id => "1"
         assigns(:expertise).should be(mock_expertise)
       end
 
       it "redirects to the expertise" do
-        Expertise.stub(:find) { mock_expertise(:update_attributes => true) }
+        mock_user.expertises.stub(:find) { mock_expertise(:update_attributes => true) }
         put :update, :id => "1"
         response.should redirect_to(expertises_url())
       end
@@ -113,13 +120,13 @@ describe ExpertisesController do
 
     describe "with invalid params" do
       it "assigns the expertise as @expertise" do
-        Expertise.stub(:find) { mock_expertise(:update_attributes => false) }
+        mock_user.expertises.stub(:find) { mock_expertise(:update_attributes => false) }
         put :update, :id => "1"
         assigns(:expertise).should be(mock_expertise)
       end
 
       it "re-renders the 'edit' template" do
-        Expertise.stub(:find) { mock_expertise(:update_attributes => false) }
+        mock_user.expertises.stub(:find) { mock_expertise(:update_attributes => false) }
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -129,13 +136,13 @@ describe ExpertisesController do
 
   describe "DELETE destroy" do
     it "destroys the requested expertise" do
-      Expertise.should_receive(:find).with("37") { mock_expertise }
+      mock_user.expertises.should_receive(:find).with('37') { mock_expertise }
       mock_expertise.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the expertises list" do
-      Expertise.stub(:find) { mock_expertise }
+      mock_user.expertises.stub(:find) { mock_expertise }
       delete :destroy, :id => "1"
       response.should redirect_to(expertises_url)
     end

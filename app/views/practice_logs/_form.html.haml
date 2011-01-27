@@ -1,13 +1,20 @@
 = form_for(@practice_log) do |f|
   - if @practice_log.errors.any?
     #error_explanation
-      %h2= #{pluralize(@practice_log.errors.count, "error")} prohibited this practice_log from being saved:</h2>
-
+      %h2
+        = t('ccicc.errors.summary', :count => @practice_log.errors.count, :type => PracticeLog.human_name.downcase)
       %ul
-        - @practice_log.errors.full_messages.each do |msg|
-          %li= msg
+      -@practice_log.errors.full_messages.each do |msg|
+        %li
+          = msg
 
-  .field Occurred On: #{f.text_field :occurred_on}
-  .field Duration: #{f.text_field :practice_duration}
-  .field Expertise: #{f.select :expertise_id, options_for_select(@expertises)}
+  .field
+    = f.label :occurred_on
+    = f.text_field :occurred_on
+  .field
+    = f.label :practice_duration
+    = f.text_field :practice_duration
+  .field
+    = f.label :expertise_id
+    = f.select :expertise_id, options_for_select(@expertises)
   .actions= f.submit

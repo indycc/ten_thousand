@@ -1,7 +1,5 @@
-%h1 Editing practice_log
+%h1= t('ccicc.editing', :type => PracticeLog.human_name)
 
 = render 'form'
 
-<!-- = link_to 'Show', @practice_log
-|-->
-= link_to 'Back', @previousUrl
+= link_to t('ccicc.back'), practice_logs_path

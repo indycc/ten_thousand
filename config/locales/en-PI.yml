@@ -1,0 +1,105 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en-PI:
+  date:
+    abbr_day_names:
+      - Sun
+      - Mun
+      - Too
+      - Wed
+      - Thr
+      - Fri
+      - Sat
+    day_names:
+      - Sundee
+      - Mundee
+      - Toosdee
+      - Wednsy
+      - Thrusdee
+      - Fridee
+      - Satarrrdee
+    month_names:
+      - ~
+      - Shivver me timbers it's Januarrry
+      - Februarrry
+      - Marrrch
+      - Month o' showers
+      - Month o' May
+      - Merry Month o' June
+      - Jul-aye!
+      - Arrrgust
+      - Septembarrr
+      - Octobarrr
+      - Novembarrr
+      - Decembarrr
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Marrr
+      - Arrrp
+      - Maye!
+      - Jun
+      - Jaye!
+      - Arrrg
+      - Sep
+      - Nov
+      - Dec
+  datetime:
+    distance_in_words:
+      less_than_x_seconds:
+        one: not quite one tick o' th' clock
+        other: not quite %{count} ticks o' th' clock
+      x_seconds:
+        one: one tick o' th' clock
+        other: %{count} ticks o' th' clock
+        # See action_view/locale/en.yml for more.
+  activerecord:
+    models:
+      expertise: Parrrrfection
+      practice_log: Tries
+    attributes:
+      expertise:
+        hours_remaining: Turns o' the clock to go
+        color: Threads
+      practice_log:
+        occurred_on: At the tide of
+        duration: Ticks o' the clock
+    errors:
+      messages:
+        invalid: be invalid.
+        blank: be blank.
+        not_a_number: be not a number.
+        # See active_model/locale/en.yml and active_record/locale/en.yml for more.
+  helpers:
+    select:
+      prompt: Pick yer poison
+    submit:
+      create: 'Fashion a %{model}'
+      update: 'Fix up a %{model}'
+      submit: 'Inscribe this %{model}'
+  ccicc:
+    access_denied: Who goes there?
+    site_name: 10,000
+    sign_in: prove yer mettle by
+    sign_out: abandon ship!
+    new: Fashion yerself a %{type}
+    created: A %{type} was fashioned on yer deck.
+    editing: Fixin' up a %{type}
+    updated: A %{type} was fixed up on yer deck.
+    show: Expose
+    edit: Fix up
+    back: Return from whence ye came
+    destroy: Burn
+    confirm_destroy: Be ye sure?
+    pick_one: "-Pick yer poison-"
+    duration_hint: Minutes or Hours:Minutes
+    quick_add: Be done!
+    errors:
+      summary:
+        one: Ye scrawled an invalid script!
+        other: Ye scribbled invalidly %{count} times!
+    reports:
+      calendar:
+        name: tides

@@ -52,14 +52,14 @@ class PracticeLogsController < ApplicationController
     
     respond_to do |format|
       if @practice_log.save
-        format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => 'Practice log was successfully created.') }
+        format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => t('ccicc.created', :model => PracticeLog.human_name)) }
         format.xml  { render :xml => practice_logs_path, :status => :created, :location => practice_logs_path }
       else
         format.html {
           if(params[:quick_add])
-            errorMessages = ""
-            @practice_log.errors.each_full { |msg| errorMessages += "<li>#{msg}</li>" }
-            redirect_to :back, :notice => "Invalid Input in Quick Add form:<ul> #{errorMessages} </ul>"
+            errors = t('ccicc.errors.summary', :count => @practice_log.errors.count) + ' ' +
+              @practice_log.errors.full_messages.join(' ')
+            redirect_to :back, :alert => errors
           else 
             render :action => "new"
           end
@@ -76,7 +76,7 @@ class PracticeLogsController < ApplicationController
 
     respond_to do |format|
       if @practice_log.update_attributes(params[:practice_log])
-        format.html { redirect_to(practice_logs_path, :notice => 'Practice log was successfully updated.') }
+        format.html { redirect_to(practice_logs_path, :notice => t('ccicc.updated', :model => PracticeLog.human_name)) }
         format.xml  { head :ok }
       else
         format.html {

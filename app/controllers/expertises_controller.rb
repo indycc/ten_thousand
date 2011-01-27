@@ -4,7 +4,7 @@ class ExpertisesController < ApplicationController
   # GET /expertises
   # GET /expertises.xml
   def index
-    @expertises = Expertise.all
+    @expertises = current_user.expertises.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class ExpertisesController < ApplicationController
   # GET /expertises/1
   # GET /expertises/1.xml
   def show
-    @expertise = Expertise.find(params[:id])
+    @expertise = current_user.expertises.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,8 @@ class ExpertisesController < ApplicationController
   # GET /expertises/new
   # GET /expertises/new.xml
   def new
-    @expertise = Expertise.new
+    @expertise = current_user.expertises.build
+    @expertise.color = Expertise.pick_default_color_for(current_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,18 +37,18 @@ class ExpertisesController < ApplicationController
 
   # GET /expertises/1/edit
   def edit
-    @expertise = Expertise.find(params[:id])
+    @expertise = current_user.expertises.find(params[:id])
   end
 
   # POST /expertises
   # POST /expertises.xml
   def create
-    @expertise = Expertise.new(params[:expertise])
+    @expertise = current_user.expertises.build(params[:expertise])
     @expertise.user = current_user
 
     respond_to do |format|
       if @expertise.save
-        format.html { redirect_to(expertises_path, :notice => 'Expertise was successfully created.') }
+        format.html { redirect_to(expertises_path, :notice => t('ccicc.created', :model => Expertise.human_name)) }
         format.xml  { render :xml => expertises_path, :status => :created, :location => expertises_path }
       else
         format.html { render :action => "new" }
@@ -59,11 +60,12 @@ class ExpertisesController < ApplicationController
   # PUT /expertises/1
   # PUT /expertises/1.xml
   def update
-    @expertise = Expertise.find(params[:id])
+    @expertise = current_user.expertises.find(params[:id])
+    @expertise.user ||= current_user
 
     respond_to do |format|
       if @expertise.update_attributes(params[:expertise])
-        format.html { redirect_to(expertises_path, :notice => 'Expertise was successfully updated.') }
+        format.html { redirect_to(expertises_path, :notice => t('ccicc.updated', :model => Expertise.human_name)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -75,7 +77,7 @@ class ExpertisesController < ApplicationController
   # DELETE /expertises/1
   # DELETE /expertises/1.xml
   def destroy
-    @expertise = Expertise.find(params[:id])
+    @expertise = current_user.expertises.find(params[:id])
     @expertise.destroy
 
     respond_to do |format|

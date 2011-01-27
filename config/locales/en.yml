@@ -2,4 +2,27 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  ccicc:
+    access_denied: You must be logged in to continue.
+    site_name: 10,000
+    sign_in: sign in with
+    sign_out: sign out
+    new: New %{type}
+    created: %{model} was successfully created.
+    editing: Editing %{type}
+    updated: %{model} was successfully updated.
+    show: Show
+    edit: Edit
+    destroy: Destroy
+    back: Back
+    confirm_destroy: Are you sure?
+    pick_one: "-Pick One-"
+    duration_hint: Minutes or Hours:Minutes
+    quick_add: Log it!
+    errors:
+      summary:
+        one: 'An error prevented this %{type} from being saved:'
+        other: '%{count} errors prevented this %{type} from being saved:'
+    reports:
+      calendar:
+        name: calendar

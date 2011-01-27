@@ -1,23 +1,23 @@
 
-Expertise:
+=Expertise.human_name + ':'
 =@expertise.name
 %br/
 
-Hours remaining:
-= @expertise.hours_remaining
+=Expertise.human_attribute_name(:hours_remaining) + ':'
+=@expertise.hours_remaining
 %br/
 
 %table
   %tr
-    %th Date
-    %th Duration
+    %th= PracticeLog.human_attribute_name(:occurred_on)
+    %th= PracticeLog.human_attribute_name(:duration)
   -@expertise.practice_logs.each do |item|
     %tr
       %td= item.occurred_on
       %td= format_time(item.duration)
-      %td= link_to 'Edit', edit_practice_log_path(item)
-      %td= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to t('ccicc.edit'), edit_practice_log_path(item)
+      %td= link_to t('ccicc.destroy'), item, :confirm => t('ccicc.confirm_destroy'), :method => :delete
 
-= link_to 'Edit', edit_expertise_path(@expertise)
+= link_to t('ccicc.edit'), edit_expertise_path(@expertise)
 |
-= link_to 'Back', expertises_path
+= link_to t('ccicc.back'), expertises_path
