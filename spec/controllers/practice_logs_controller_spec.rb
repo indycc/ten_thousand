@@ -11,23 +11,21 @@ describe PracticeLogsController do
       user.stub(stubs) unless stubs.empty?
     end
   end
+  def sign_in!
+    session[:user_id] = '33'
+    User.stub(:find).with('33') { mock_user(:present? => true, :id => 33) }
+  end
   
   before(:each) do
-    u = User.new()
-    u.id = 23
-    session[:user_id] = u.id
-    User.stub(:find).and_return(u)
-    User.stub(:find_by_id).and_return(u)
+    sign_in!
   end
   
   it "should not commit when a nil expertise is submitted" do    
-    #PracticeLog.stub(:new) { mock_practice_log(:safe => true) }
     request.env['HTTP_REFERER'] = '/back'
     lambda { 
       post :create, :practice_log => {:expertise_id => nil, :practice_duration => "15", :occurred_on => "10/10/2010"}, :quick_add => 'true'
     }.should_not raise_error()
     
-    #puts assigns(:practice_log).errors
     assigns(:practice_log).errors.should_not be_empty
     
               
@@ -103,10 +101,8 @@ describe PracticeLogsController do
       end
       
       it "adds the current user to the practice_log" do
-        session[:user_id] = 23
-        User.stub!(:find_by_id){mock_user(:id => 23)}
         post :create, :practice_log => {:expertise_id => 1, :practice_duration => "15", :occurred_on => "10/10/2010"}
-        assigns(:practice_log).user_id.should == 23
+        assigns(:practice_log).user_id.should == 33
       end
       
       it "creates using minutes as the default unit of measure" do

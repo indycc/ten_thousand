@@ -10,9 +10,10 @@ describe Expertise do
   describe 'after some practice' do
     before do
       subject.user = User.create!
+      subject.name = "Test Expertise"
       subject.save!
-      subject.practice_logs.create! :duration => 100.minutes
-      subject.practice_logs.create! :duration => 10.minutes
+      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => Time.now
+      subject.practice_logs.create! :duration => 10.minutes, :occurred_on => Time.now
     end
     its(:seconds_required) { should == 10000.hours }
     its(:seconds_remaining) { should == (10000.hours - 110.minutes) }

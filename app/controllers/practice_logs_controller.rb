@@ -57,7 +57,7 @@ class PracticeLogsController < ApplicationController
       else
         format.html {
           if(params[:quick_add])
-            errors = t('ccicc.errors.summary', :count => @practice_log.errors.count) + ' ' +
+            errors = t('ccicc.errors.summary', :count => @practice_log.errors.count, :type => PracticeLog.human_name.downcase) + ' ' +
               @practice_log.errors.full_messages.join(' ')
             redirect_to :back, :alert => errors
           else 
