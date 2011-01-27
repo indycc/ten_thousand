@@ -3,6 +3,7 @@ class PracticeLog < ActiveRecord::Base
   belongs_to :user
   validates :expertise_id, :presence => true, :numericality => true
   validates :duration, :presence => true, :numericality => true
+  validates :occurred_on, :presence => true
 
   has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
 
@@ -40,6 +41,10 @@ class PracticeLog < ActiveRecord::Base
       else
         nil
       end
+  end
+
+  def reset_values!
+    changed_attributes.keys.each{ |attr| reset_attribute! attr }
   end
 
   private

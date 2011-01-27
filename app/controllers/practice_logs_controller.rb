@@ -79,7 +79,11 @@ class PracticeLogsController < ApplicationController
         format.html { redirect_to(practice_logs_path, :notice => 'Practice log was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html {
+           @expertises = Expertise.all.collect{ |e| [e.name, e.id] }
+           @practice_log.reset_values!
+           render :action => "edit"
+        }
         format.xml  { render :xml => @practice_log.errors, :status => :unprocessable_entity }
       end
     end
