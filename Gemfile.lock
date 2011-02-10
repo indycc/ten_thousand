@@ -31,6 +31,7 @@ GEM
     addressable (2.2.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
+    awesome_print (0.3.1)
     bcrypt-ruby (2.1.2)
     builder (2.1.2)
     columnize (0.3.1)
@@ -132,6 +133,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  awesome_print
   event-calendar
   haml-rails
   jquery-rails

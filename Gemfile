@@ -12,3 +12,4 @@ gem 'omnisocial'
 gem 'haml-rails'
 gem 'mongrel', ">=1.2.0.beta"
 gem 'event-calendar', :require => 'event_calendar'
+gem 'awesome_print'

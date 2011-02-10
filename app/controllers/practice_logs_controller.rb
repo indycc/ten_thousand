@@ -52,12 +52,12 @@ class PracticeLogsController < ApplicationController
     
     respond_to do |format|
       if @practice_log.save
-        format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => t('ccicc.created', :model => PracticeLog.human_name)) }
+        format.html { redirect_to(params[:quick_add] ? :back : practice_logs_path, :notice => t('ccicc.created', :model => PracticeLog.model_name.human)) }
         format.xml  { render :xml => practice_logs_path, :status => :created, :location => practice_logs_path }
       else
         format.html {
           if(params[:quick_add])
-            errors = t('ccicc.errors.summary', :count => @practice_log.errors.count, :type => PracticeLog.human_name.downcase) + ' ' +
+            errors = t('ccicc.errors.summary', :count => @practice_log.errors.count, :type => PracticeLog.model_name.human.downcase) + ' ' +
               @practice_log.errors.full_messages.join(' ')
             redirect_to :back, :alert => errors
           else 
@@ -76,7 +76,7 @@ class PracticeLogsController < ApplicationController
 
     respond_to do |format|
       if @practice_log.update_attributes(params[:practice_log])
-        format.html { redirect_to(practice_logs_path, :notice => t('ccicc.updated', :model => PracticeLog.human_name)) }
+        format.html { redirect_to(practice_logs_path, :notice => t('ccicc.updated', :model => PracticeLog.model_name.human)) }
         format.xml  { head :ok }
       else
         format.html {

@@ -48,7 +48,7 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.save
-        format.html { redirect_to(expertises_path, :notice => t('ccicc.created', :model => Expertise.human_name)) }
+        format.html { redirect_to(expertises_path, :notice => t('ccicc.created', :model => Expertise.model_name.human)) }
         format.xml  { render :xml => expertises_path, :status => :created, :location => expertises_path }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class ExpertisesController < ApplicationController
 
     respond_to do |format|
       if @expertise.update_attributes(params[:expertise])
-        format.html { redirect_to(expertises_path, :notice => t('ccicc.updated', :model => Expertise.human_name)) }
+        format.html { redirect_to(expertises_path, :notice => t('ccicc.updated', :model => Expertise.model_name.human)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
