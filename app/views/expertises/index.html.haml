@@ -6,12 +6,14 @@
     %th
     %th= Expertise.human_attribute_name(:name)
     %th= Expertise.human_attribute_name(:hours_remaining)
+    %th= t('ccicc.time_spent_this_week')
   -@expertises.each do |expertise|
     %tr
       %td
         %div{:style => "width: 10px; height: 10px; background-color: #{expertise.color}"}
       %td= expertise.name
       %td= expertise.hours_remaining
+      %td= distance_of_time_in_words expertise.time_spent
       %td= link_to t('ccicc.show'), expertise
       %td= link_to t('ccicc.edit'), edit_expertise_path(expertise)
       %td= link_to t('ccicc.destroy'), expertise, :confirm => t('ccicc.confirm_destroy'), :method => :delete

@@ -1,8 +1,8 @@
-%h1= PracticeLog.human_name.pluralize
+%h1= PracticeLog.model_name.human.pluralize
 
 %table
   %tr
-    %th= Expertise.human_name
+    %th= Expertise.model_name.human
     %th= PracticeLog.human_attribute_name :occurred_on
     %th= PracticeLog.human_attribute_name :duration
   -@practice_logs.each do |practice_log|

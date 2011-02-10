@@ -18,6 +18,10 @@ class Expertise < ActiveRecord::Base
     %W(red green blue orange purple fuscia pink brown black gray)[user.expertises.count]
   end
 
+  def time_spent
+    practice_logs.where('occurred_on >= ?', 1.week.ago).all.inject(0){ |accum, p| accum + p.duration}
+  end
+
   private
   def set_defaults
     self.seconds_required ||= 10000.hours

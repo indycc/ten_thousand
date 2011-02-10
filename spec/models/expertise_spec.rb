@@ -39,4 +39,24 @@ describe Expertise do
     subject.color = 'fuscia'
     subject.should have(:no).errors_on(:color)
   end
+
+  describe :time_spent do
+    it 'should sum the practice logs from the last week' do
+      subject.user = User.create!
+      subject.name = "Test Expertise"
+      subject.save!
+      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => Time.now
+      subject.practice_logs.create! :duration => 10.minutes, :occurred_on => Time.now
+      PracticeLog.create :user => User.create!, :duration => 15.minutes, :occurred_on => Time.now
+      subject.time_spent.should == 6600
+    end
+
+    it 'should not include older results' do
+      subject.user = User.create!
+      subject.name = "Test Expertise"
+      subject.save!
+      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => Time.now - 8.days
+      subject.time_spent.should == 0
+    end
+  end
 end
