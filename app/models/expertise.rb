@@ -19,7 +19,7 @@ class Expertise < ActiveRecord::Base
   end
 
   def time_spent(distance = 1.week)
-    practice_logs.where('occurred_on >= ?', distance.ago).all.inject(0){ |accum, p| accum + p.duration}
+    practice_logs.where('occurred_on >= ?', distance.ago).sum(:duration)
   end
 
   private
