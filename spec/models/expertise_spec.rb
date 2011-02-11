@@ -42,13 +42,20 @@ describe Expertise do
 
   describe :time_spent do
     it 'should sum the practice logs from the last week' do
-      subject.user = User.create!
+      user1 = User.create!
+      user2 = User.create!
+      subject.user = user1
       subject.name = "Test Expertise"
       subject.save!
       subject.practice_logs.create! :duration => 100.minutes, :occurred_on => Time.now
       subject.practice_logs.create! :duration => 10.minutes, :occurred_on => Time.now
-      PracticeLog.create :user => User.create!, :duration => 15.minutes, :occurred_on => Time.now
-      subject.time_spent.should == 6600
+      (other_expertise = Expertise.new do |e|
+        e.color = 'gray'
+        e.user = user2
+        e.name = "Other"
+      end).save!
+      PracticeLog.create! :duration => 15.minutes, :occurred_on => Time.now, :expertise => other_expertise
+      subject.time_spent.should == 110.minutes
     end
 
     it 'should not include older results' do
