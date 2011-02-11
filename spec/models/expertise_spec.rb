@@ -62,8 +62,17 @@ describe Expertise do
       subject.user = User.create!
       subject.name = "Test Expertise"
       subject.save!
-      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => Time.now - 8.days
+      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => 8.days.ago
       subject.time_spent.should == 0
+    end
+
+    it 'should take an arbitrary time span' do
+      subject.user_id = User.create!
+      subject.name = "Test Expertise"
+      subject.save!
+      subject.practice_logs.create! :duration => 100.minutes, :occurred_on => 2.weeks.ago
+      subject.practice_logs.create! :duration => 10.minutes, :occurred_on => Time.now
+      subject.time_spent(1.month).should == 110.minutes
     end
   end
 end
