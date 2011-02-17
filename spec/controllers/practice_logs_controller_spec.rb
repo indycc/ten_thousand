@@ -115,6 +115,12 @@ describe PracticeLogsController do
         assigns(:practice_log).duration.should == 75.minutes
       end
       
+      it "returns a validation error if zero is entered on the quick add form" do
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "0", 
+          :occurred_on => "10/10/2010"}
+        assigns(:practice_log).should have(1).errors_on(:duration)
+
+      end
     end
 
     describe "with invalid params" do

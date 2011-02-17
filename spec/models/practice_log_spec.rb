@@ -20,6 +20,11 @@ describe PracticeLog do
     @p_log.user.should_not be_nil
   end
 
+  it "should error when duration is zero" do
+    subject.duration = 0
+    subject.valid?.should be_false
+    subject.errors[:duration].should == ["Duration cannot be zero"]
+  end
     context "With Hour" do
       before (:each) do
         @p_log.duration = 75.minutes

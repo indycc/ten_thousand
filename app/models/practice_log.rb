@@ -4,6 +4,9 @@ class PracticeLog < ActiveRecord::Base
   validates :expertise_id, :presence => true, :numericality => true
   validates :duration, :presence => true, :numericality => true
   validates :occurred_on, :presence => true
+  validates_each :duration do |model, attr, value|
+    model.errors.add(attr, "Duration cannot be zero") if value == 0
+  end
 
   has_event_calendar :start_at_field => 'occurred_on', :end_at_field => 'occurred_on'
 
