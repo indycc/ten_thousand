@@ -9,6 +9,6 @@
     %tr
     %td= practice_log.expertise.name
     %td= practice_log.occurred_on
-    %td= format_time(practice_log.duration)
+    %td= distance_of_time_in_words(practice_log.duration)
     %td= link_to t('ccicc.edit'), edit_practice_log_path(practice_log)
     %td= link_to t('ccicc.destroy'), practice_log, :confirm => t('ccicc.confirm_destroy'), :method => :delete

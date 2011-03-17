@@ -48,12 +48,22 @@ en-PI:
       - Dec
   datetime:
     distance_in_words:
+      less_than_x_minutes:
+        one: not quite one turn o' the clock
+        other: not quite %{count} turns o' th' clock
       less_than_x_seconds:
         one: not quite one tick o' th' clock
         other: not quite %{count} ticks o' th' clock
+      x_minutes:
+        one: one turn o' th' clock
+        other: %{count} turns o' th' clock
       x_seconds:
         one: one tick o' th' clock
         other: %{count} ticks o' th' clock
+        # See action_view/locale/en.yml for more.
+      about_x_hours:
+        one: the shadows be small
+        other: not quite %{count} meters of shadow
         # See action_view/locale/en.yml for more.
   activerecord:
     models:

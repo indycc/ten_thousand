@@ -4,7 +4,7 @@
   = @practice_log.occurred_on
 %div
   = PracticeLog.human_attribute_name(:duration) + ':'
-  = format_time(@practice_log.duration)
+  = distance_of_time_in_words(@practice_log.duration)
 =link_to t('ccicc.edit'), edit_practice_log_path(@practice_log)
 |
-=link_to t('back'), practice_logs_path
+=link_to t('ccicc.back'), practice_logs_path
