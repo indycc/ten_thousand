@@ -114,6 +114,26 @@ describe PracticeLogsController do
         post :create, :practice_log => {:expertise_id => 1, :practice_duration => "1:15", :occurred_on => "10/10/2010"}
         assigns(:practice_log).duration.should == 75.minutes
       end
+
+      it "handles '1 minute'" do
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "1 minute", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should == 1.minute
+      end
+
+      it "handles '2 minutes'" do
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "2 minutes", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should == 2.minutes
+      end
+
+      it "handles '1 hour'" do
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "1 hour", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should == 1.hour
+      end
+
+      it "handles '2 hours'" do
+        post :create, :practice_log => {:expertise_id => 1, :practice_duration => "2 hours", :occurred_on => "10/10/2010"}
+        assigns(:practice_log).duration.should == 2.hours
+      end
       
       it "returns a validation error if zero is entered on the quick add form" do
         post :create, :practice_log => {:expertise_id => 1, :practice_duration => "0", 
