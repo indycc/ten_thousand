@@ -17,7 +17,16 @@ class PracticeLog < ActiveRecord::Base
   def color ; expertise.color ; end
 
   def name
-    expertise.name
+    return "#{expertise.name} #{calendar_practice_duration}" 
+  end
+
+  def calendar_practice_duration
+    shown_duration = practice_duration
+    if (shown_duration =~ /:/).nil? 
+      shown_duration = "0:#{shown_duration}"
+    end
+
+    return shown_duration
   end
 
   def practice_duration
