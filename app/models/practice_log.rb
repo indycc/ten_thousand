@@ -49,6 +49,10 @@ class PracticeLog < ActiveRecord::Base
         ftime.to_i.minutes
       when /^(\d+):(\d+)$/
         $1.to_i.hours + $2.to_i.minutes
+      when /(\d+) hours?/
+        $1.to_i.hours
+      when /(\d+) minutes?/
+        $1.to_i.minutes
       else
         nil
       end

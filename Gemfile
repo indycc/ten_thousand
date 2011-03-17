@@ -14,3 +14,4 @@ gem 'mongrel', ">=1.2.0.beta"
 gem 'event-calendar', :require => 'event_calendar'
 gem 'grape'
 gem 'awesome_print'
+gem 'newrelic_rpm'
