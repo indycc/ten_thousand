@@ -9,10 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = params[:locale] if params[:locale]
-  end
-
-  def default_url_options
-    super.merge :locale => I18n.locale
+    locale = params[:locale] || session[:locale]
+    if locale && I18n.available_locales.include?(locale.to_sym)
+      I18n.locale = session[:locale] = locale
+    end
   end
 end
