@@ -61,3 +61,27 @@ body
   border-left: solid 1px black;
   border-right: solid 1px black;
 }
+
+#content
+{
+  margin-bottom: 3em;
+}
+#footer
+{
+  position: fixed;
+  bottom: 0;
+  height: 2em;
+  width: 100%;
+  font-size: xx-small;
+  text-align: center;
+  padding: 0.5em;
+  background-color: #bfa;
+  border-top: solid 2px #180;
+}
+#footer ul, #footer li, #footer div
+{
+  display: inline;
+  text-indent: 0;
+  padding: 0;
+  margin: 0;
+}
