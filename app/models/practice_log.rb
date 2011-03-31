@@ -21,7 +21,7 @@ class PracticeLog < ActiveRecord::Base
   end
 
   def calendar_practice_duration
-    shown_duration = practice_duration
+    shown_duration = practice_duration.rjust(2, '0')
     if (shown_duration =~ /:/).nil? 
       shown_duration = "0:#{shown_duration}"
     end

@@ -1,2 +1,4 @@
 = stylesheet_link_tag "event_calendar"
 = raw event_calendar
+%div
+  = "#{t('ccicc.time_spent_this_month')}: #{distance_of_time_in_words(@total_month_hours)}"
