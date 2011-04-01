@@ -11,7 +11,7 @@
   %tr
     %th= PracticeLog.human_attribute_name(:occurred_on)
     %th= PracticeLog.human_attribute_name(:duration)
-  -@expertise.practice_logs.each do |item|
+  -@expertise.practice_logs.order('occurred_on desc').each do |item|
     %tr
       %td= item.occurred_on
       %td= distance_of_time_in_words(item.duration)

@@ -5,18 +5,41 @@
   %tr
     %th
     %th= Expertise.human_attribute_name(:name)
-    %th= Expertise.human_attribute_name(:hours_remaining)
-    %th= t('ccicc.time_spent_this_week')
+    %th= t('ccicc.progress')
   -@expertises.each do |expertise|
-    %tr
+    %tr{'data-expertise_id' => expertise.id}
       %td
         %div{:style => "width: 10px; height: 10px; background-color: #{expertise.color}"}
-      %td= expertise.name
-      %td= expertise.hours_remaining
-      %td= distance_of_time_in_words expertise.time_spent
-      %td= link_to t('ccicc.show'), expertise
+      %td= link_to expertise.name, expertise
+      %td
+        %span.hours_remaining_sparkline
+          = t('ccicc.hours_remaining', :remaining => expertise.hours_remaining)
+      %td
+        %span.hours_this_week_sparkline
+          = t('ccicc.time_spent_this_week', :time => distance_of_time_in_words(expertise.time_spent))
       %td= link_to t('ccicc.edit'), edit_expertise_path(expertise)
       %td= link_to t('ccicc.destroy'), expertise, :confirm => t('ccicc.confirm_destroy'), :method => :delete
 <br />
 
 = link_to t('ccicc.new', :type => Expertise.human_name), new_expertise_path
+
+=javascript_include_tag 'jquery.sparkline.min.js'
+:javascript
+  function expertises_sparklines(data, textStatus, xhr) {
+    $.each(data, function(_, point) {
+      var row = $('[data-expertise_id = ' + point.id + ']');
+      $('.hours_remaining_sparkline', row).attr({
+        'values': point.remaining,
+        'sparkSliceColors': [point.color, 'white'],
+      });
+      $('.hours_this_week_sparkline', row).attr({
+        'values': point.recent,
+        'sparkBarColor': point.color,
+      });
+    });
+    //$('.hours_remaining_sparkline').sparkline('html', { enableTagOptions: true, type: 'pie' });
+    $('.hours_this_week_sparkline').sparkline('html', { enableTagOptions: true, type: 'bar' });
+  }
+  $(function() {
+    $.getJSON('#{expertises_path(:format => :js)}', expertises_sparklines);
+  });

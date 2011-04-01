@@ -9,6 +9,7 @@ class ExpertisesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @expertises }
+      format.js   { render :json => @expertises.collect(&:to_sparkline) }
     end
   end
 

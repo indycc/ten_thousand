@@ -26,5 +26,7 @@ en:
     reports:
       calendar:
         name: calendar
-    time_spent_this_week: Time spent this week
+    progress: Progress
+    hours_remaining: '%{remaining} hours left!'
+    time_spent_this_week: 'This week: %{time}'
     time_spent_this_month: Time spent this month

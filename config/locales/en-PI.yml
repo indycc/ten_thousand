@@ -113,4 +113,6 @@ en-PI:
     reports:
       calendar:
         name: tides
-    time_spent_this_week: Ticks o' th' clock this week
+    progress: Reading on the sextant
+    hours_remaining: '%{remaining} turns of the hourglass to go'
+    time_spent_this_week: "%{time} completed this week"

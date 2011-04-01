@@ -22,6 +22,20 @@ class Expertise < ActiveRecord::Base
     practice_logs.where('occurred_on >= ?', distance.ago).sum(:duration)
   end
 
+  def to_sparkline(weeks = 26)
+    logs = practice_logs.where('occurred_on > ?', weeks.weeks)
+    logs = logs.inject([0]*weeks) { |res, log|
+      res[weeks_ago = (Date.today - log.occurred_on).to_i / 7] += log.duration
+      res
+    }.reverse
+    {
+      :id => id,
+      :remaining => [seconds_remaining, seconds_required - seconds_remaining],
+      :recent => logs,
+      :color => color,
+    }
+  end
+
   private
   def set_defaults
     self.seconds_required ||= 10000.hours
