@@ -21,12 +21,7 @@ class PracticeLog < ActiveRecord::Base
   end
 
   def calendar_practice_duration
-    shown_duration = practice_duration.rjust(2, '0')
-    if (shown_duration =~ /:/).nil? 
-      shown_duration = "0:#{shown_duration}"
-    end
-
-    return shown_duration
+    practice_duration
   end
 
   def practice_duration
@@ -36,9 +31,9 @@ class PracticeLog < ActiveRecord::Base
     
     case
     when hours == 0
-      "#{minutes}"
+      "0:#{minutes.to_s.rjust(2, '0')}"
     else
-      "#{hours}:#{minutes}"
+      "#{hours}:#{minutes.to_s.rjust(2, '0')}"
     end
   end
 
