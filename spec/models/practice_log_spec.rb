@@ -9,7 +9,7 @@ describe PracticeLog do
 
   # Default values
   its(:duration) { should == 0 }
-  its(:practice_duration) { should == '0' }
+  its(:practice_duration) { should == '0:00' }
 
   it 'should handle nil duration' do
     subject.duration = nil
@@ -43,7 +43,7 @@ describe PracticeLog do
       @p_log.duration = 45.minutes
     end
     it "should display as 45" do
-      @p_log.practice_duration.should == "45"
+      @p_log.practice_duration.should == "0:45"
     end
     it "should accept 45 as 45 minutes" do
       @p_log.practice_duration = "45"
