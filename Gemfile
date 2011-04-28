@@ -5,7 +5,6 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'jquery-rails'
 group :development, :test do
    gem 'ruby-debug', :require => nil
-   gem 'rspec'
    gem 'rspec-rails'
 end
 gem 'omnisocial'
