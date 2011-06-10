@@ -6,6 +6,7 @@ gem 'jquery-rails'
 group :development, :test do
    gem 'ruby-debug', :require => nil
    gem 'rspec-rails'
+   gem 'ci_reporter', :require => nil
 end
 gem 'omnisocial'
 gem 'haml-rails'

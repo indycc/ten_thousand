@@ -10,3 +10,4 @@ nbproject
 nbproject/*
 tmp/restart.txt
 vendor/gems
+spec/reports/
